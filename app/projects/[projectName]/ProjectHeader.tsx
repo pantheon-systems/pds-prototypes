@@ -23,10 +23,15 @@ export default function ProjectHeader({ metadata, template }: ProjectHeaderProps
   }, [])
 
   // Save hidden state to localStorage
-  const toggleHeader = () => {
+  const toggleHeader = (e: React.MouseEvent<HTMLButtonElement>) => {
     const newState = !isHidden
     setIsHidden(newState)
     localStorage.setItem('projectHeaderHidden', String(newState))
+
+    // Remove focus when hiding so button becomes invisible
+    if (newState) {
+      e.currentTarget.blur()
+    }
   }
 
   const headerClass = template === 'dashboard' ? styles.projectHeaderDashboard : styles.projectHeaderDefault

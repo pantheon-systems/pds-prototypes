@@ -60,13 +60,14 @@
 }
 
 .projectHeaderToggle {
-  position: fixed;
+  position: absolute;
   top: var(--pds-spacing-xs);
   right: var(--pds-spacing-xl);
   z-index: 11;
 }
 
 .toggleHidden {
+  position: fixed;
   opacity: 0;
   transition: opacity 0.2s ease;
 }
