@@ -19,7 +19,7 @@ Make sure you have:
 1. **Set up the project:**
 
    ```bash
-   git clone <repository-url>
+   git clone https://github.com/pantheon-systems/pds-prototypes.git
    cd pds-prototypes
    npm install
    ```
@@ -114,18 +114,19 @@ Use this when you need a standard dashboard layout with navigation.
 
 **What you get:**
 
-- Pre-built sidebar navigation
-- 4 nav sections (Overview, Sites, Users, Settings)
-- Empty content areas ready for your work
-- Responsive layout
-- Active state management
+- Complete PDS DashboardGlobal layout
+- Pre-built sidebar navigation with sample menu items
+- Top navbar with workspace selector, search, help menu, and user menu
+- Footer with legal links
+- Empty main content area ready for your work
+- Fully responsive and accessible
 
 **Best for:**
 
 - Admin interfaces
 - Management dashboards
 - Site/user listings
-- Settings pages
+- Any page that needs standard Pantheon dashboard chrome
 
 ## Using PDS Components
 
@@ -155,7 +156,9 @@ import { Button, Card, Table } from '@pantheon-systems/pds-toolkit-react';
 
 ### Client vs Server Components
 
-PDS components need to be used in **Client Components**. Add this at the top of your file:
+PDS components need to be used in **Client Components**. All project templates already include the `'use client'` directive at the top, so you don't need to add it yourself.
+
+If you create additional component files, add this at the top:
 
 ```typescript
 'use client';
@@ -164,19 +167,20 @@ import { Button } from '@pantheon-systems/pds-toolkit-react';
 // ... rest of your code
 ```
 
-### Using GlobalWrapper
+### GlobalWrapper (Already Included)
 
-Some PDS components (like Navbar, Modal, Popover) require **GlobalWrapper** to provide necessary context:
+All project templates include **GlobalWrapper** by default, which provides necessary context for PDS components like Navbar, Modal, and Popover.
+
+You don't need to add GlobalWrapper yourself - it's already wrapping your page content in the template:
 
 ```typescript
 'use client'
 
-import { GlobalWrapper, Navbar, Container } from '@pantheon-systems/pds-toolkit-react'
+import { GlobalWrapper, Container } from '@pantheon-systems/pds-toolkit-react'
 
 export default function MyPage() {
   return (
-    <GlobalWrapper>
-      <Navbar logoDisplayType="sub-brand" logoSubBrand="My App" />
+    <GlobalWrapper>  {/* ← Already included in templates */}
       <Container>
         <h1>My Content</h1>
       </Container>
@@ -185,10 +189,11 @@ export default function MyPage() {
 }
 ```
 
-**When to use GlobalWrapper:**
+**What you need to know:**
 
-- When using Navbar, Modal, Popover, or other overlay components
-- Generally at the top level of your page component
+- GlobalWrapper is already set up in all templates
+- PDS components will work immediately without additional setup
+- Only add GlobalWrapper if you create new page files outside the template structure
 
 ## Working with Shared Data
 
@@ -366,22 +371,37 @@ Visit: http://localhost:3000/projects/your-project
 
 ### Sharing via Multidev
 
-1. Commit your changes:
+**Work locally first:**
 
-   ```bash
-   git add .
-   git commit -m "Add site management interface"
-   ```
+```bash
+git add .
+git commit -m "Add site management interface"
+```
 
-2. Push your branch:
+**When ready to share:**
+
+1. Push your branch:
 
    ```bash
    git push origin your-branch-name
    ```
 
-3. Pantheon will create a multidev URL automatically
+2. Create a Draft Pull Request on GitHub:
 
-4. Share the URL with your team!
+   - Go to the repository on GitHub
+   - Click "Pull requests" → "New pull request"
+   - Select your branch to merge into `main`
+   - Click "Create **draft** pull request"
+
+3. A multidev environment will be created automatically for your PR
+
+4. Share the multidev URL with your team for feedback!
+
+**For final handoff:**
+
+- Mark your draft PR as "Ready for review"
+- Request a review from `mel-miller`
+- After approval, your prototype will be merged to main
 
 ### Updating Metadata
 
@@ -406,13 +426,13 @@ Restart the dev server to see changes on the homepage.
 
 ### Component Not Rendering
 
-Did you add `'use client'` at the top?
+All templates include `'use client'` and `GlobalWrapper` by default, so components should work immediately.
 
-```typescript
-'use client';
+If a component isn't rendering:
 
-import { Button } from '@pantheon-systems/pds-toolkit-react';
-```
+- Check the browser console for errors
+- Verify the component is imported correctly
+- Ask Claude to help troubleshoot: "This component isn't rendering, can you help?"
 
 ### Styles Not Applying
 

@@ -19,7 +19,7 @@ This Next.js application provides a collaborative space for designers to create,
 1. Clone the repository:
 
    ```bash
-   git clone <repository-url>
+   git clone https://github.com/pantheon-systems/pds-prototypes.git
    cd pds-prototypes
    ```
 
@@ -84,7 +84,205 @@ projects/your-project-name/
 └── data/              # (Optional) Project-specific mock data
 ```
 
-### Using PDS Components
+### Working with Claude Code
+
+This project is designed to work seamlessly with Claude Code. The PDS MCP server is configured, so Claude has direct access to all PDS components and their documentation.
+
+#### Building with PDS Components
+
+Ask Claude to build UI elements using PDS components. Here are example prompts:
+
+**Basic Components:**
+
+- "Add a Button component with the label 'Submit'"
+- "Create a Card component with a heading and description"
+- "Add a Container component to wrap this page content"
+
+**Data Display:**
+
+- "Create a Table component showing all active sites"
+- "Add an IndicatorBadge to show the site status"
+- "Build a card layout displaying user information"
+- "Create a list of sites with their name, plan, and status"
+
+**Styling:**
+
+- "Style this heading using PDS design tokens"
+- "Update the spacing to use PDS spacing tokens"
+- "Change the button variant to 'primary'"
+
+Claude will automatically:
+
+- Import the correct PDS components
+- Use proper TypeScript types
+- Handle all setup (templates already include `'use client'` and `GlobalWrapper`)
+
+All PDS components will work out of the box - no additional setup needed.
+
+#### Using Shared Data
+
+Ask Claude to use the shared mock data available in `/shared-data/`:
+
+**Site Data:**
+
+- "Display a table of all sites from shared data"
+- "Show only the active sites in a card grid"
+- "Create a list of sites grouped by framework"
+- "Filter sites by plan tier and display them"
+
+**User Data:**
+
+- "Show a list of all users with their roles"
+- "Create user profile cards using shared data"
+- "Display team members in a table"
+
+**Example Prompts:**
+
+- "Use the sites data to create a dashboard showing site metrics"
+- "Build a user directory using the shared user data"
+- "Show the 5 most recently updated sites from shared data"
+
+Claude will automatically import the data and helper functions you need.
+
+See `/shared-data/README.md` for available data and helper functions.
+
+## Git Workflow
+
+### Stage 1: Work Locally
+
+Start building your prototype on a local branch. Preview at http://localhost:3000:
+
+**Terminal:**
+
+```bash
+# Make changes to your project
+# ...
+
+# Commit your changes locally
+git add .
+git commit -m "Add site management interface"
+```
+
+**GitHub Desktop:**
+
+1. Make changes to your project files
+2. GitHub Desktop will show your changes in the left sidebar
+3. Add a commit message in the bottom left
+4. Click "Commit to your-name/project-name"
+
+Continue iterating locally without pushing. This is perfect for exploration and early development.
+
+### Stage 2: Share In-Progress Work
+
+When you're ready to share your prototype with others:
+
+1. **Push your branch** to GitHub:
+
+   **Terminal:**
+
+   ```bash
+   git push origin your-name/project-name
+   ```
+
+   **GitHub Desktop:**
+
+   - Click "Push origin" button in the top toolbar
+
+2. **Create a Draft Pull Request**:
+
+   - Go to the repository on GitHub in your web browser
+   - Click "Pull requests" → "New pull request"
+   - Select your branch to merge into `main`
+   - Add a title and description of what you're working on
+   - Click "Create **draft** pull request" (use the dropdown arrow)
+
+   Alternatively, in **GitHub Desktop**:
+
+   - Click "Preview Pull Request" button
+   - Review changes and click "Create pull request"
+   - This opens GitHub in your browser where you can make it a draft
+
+3. **Multidev environment created**:
+
+   - A multidev environment is automatically created for your PR
+   - You'll receive a URL to share with teammates and PMs
+   - Continue pushing updates as you iterate
+   - The multidev URL updates automatically with each push
+
+4. **Collaborate and iterate**:
+
+   - Share the multidev URL for feedback
+   - Make changes based on feedback
+   - Push updates:
+
+   **Terminal:** `git push origin your-name/project-name`
+
+   **GitHub Desktop:** Click "Push origin" button
+
+   No approval needed yet - this is your working space
+
+### Stage 3: Final Handoff or Archive
+
+When your prototype is ready for final handoff or to be archived:
+
+1. **Request approval**:
+
+   - Mark your draft PR as "Ready for review"
+   - **Request a review from `mel-miller`**
+   - Add final context about what this prototype demonstrates
+
+2. **Merge to main**:
+   - After approval, merge the PR
+   - Your prototype is now on the main URL
+   - Use the main URL for stakeholder demos and handoffs
+   - The multidev branch will be cleaned up automatically
+
+### Temporary/Exploratory Work
+
+If you were just exploring and don't want to share or keep the prototype:
+
+1. **Don't create a PR** - just work locally
+2. When you're done, delete your local branch:
+
+   **Terminal:**
+
+   ```bash
+   git checkout main
+   git pull origin main
+   git branch -D your-name/project-name
+   ```
+
+   **GitHub Desktop:**
+
+   - Switch to the `main` branch using the branch dropdown
+   - Click "Fetch origin" then "Pull origin" to get latest changes
+   - Right-click your branch in the branch list
+   - Select "Delete..."
+
+### Keeping Projects in Sync
+
+Periodically pull the latest changes from main to see other designers' work:
+
+**Terminal:**
+
+```bash
+git checkout main
+git pull origin main
+```
+
+**GitHub Desktop:**
+
+1. Switch to the `main` branch using the branch dropdown
+2. Click "Fetch origin" to check for updates
+3. Click "Pull origin" to download the latest changes
+
+See `/docs/GIT_WORKFLOW.md` for more details.
+
+## Advanced Use
+
+For developers who prefer to write code directly instead of using Claude Code:
+
+### Using PDS Components Directly
 
 Import components from the PDS library:
 
@@ -94,54 +292,55 @@ Import components from the PDS library:
 import { Button, Card, Container, GlobalWrapper } from '@pantheon-systems/pds-toolkit-react'
 
 export default function MyPrototype() {
-  return (
-    <GlobalWrapper>
-      <Container>
-        <Card>
-          <h2>Hello PDS!</h2>
-          <Button>Click Me</Button>
-        </Card>
-      </Container>
-    </GlobalWrapper>
-  )
+	return (
+		<GlobalWrapper>
+			<Container>
+				<Card>
+					<h2>Hello PDS!</h2>
+					<Button>Click Me</Button>
+				</Card>
+			</Container>
+		</GlobalWrapper>
+	)
 }
 ```
 
-**Note:** Some PDS components require `GlobalWrapper` for context. Add `'use client'` at the top of files using PDS components.
+**Important Notes:**
 
-### Using Shared Data
+- All templates already include `'use client'` and `GlobalWrapper` - you don't need to add these
+- The code example above shows the structure for reference
+- Import only the components you need to optimize bundle size
 
-We provide mock data for common scenarios:
+### Using Shared Data Directly
+
+Import data and helper functions:
 
 ```typescript
-import { users, sites, getActiveSites } from '@/shared-data'
+import { sites, users, getActiveSites } from '@/shared-data'
 
 export default function MyPrototype() {
-  const activeSites = getActiveSites()
+	const activeSites = getActiveSites()
 
-  return (
-    <div>
-      {activeSites.map(site => (
-        <div key={site.id}>
-          {site.name} - {site.upstream} - {site.plan}
-        </div>
-      ))}
-    </div>
-  )
+	return (
+		<div>
+			{activeSites.map((site) => (
+				<div key={site.id}>
+					{site.name} - {site.upstream} - {site.plan}
+				</div>
+			))}
+		</div>
+	)
 }
 ```
 
-See `/shared-data/README.md` for details.
+**Available Data:**
 
-### Working with Claude Code
+- `sites` - Array of 40 mock Pantheon sites with realistic data
+- `users` - Array of mock user objects
+- `getActiveSites()` - Helper to filter only active sites
+- `getSitesByFramework()` - Helper to group sites by framework
 
-This project has the PDS MCP server configured. You can ask Claude to:
-
-- "Add a table showing all active sites"
-- "Create a card layout with user information"
-- "Style this heading using PDS design tokens"
-- "Add an IndicatorBadge to show site status"
-- "Wrap this page in GlobalWrapper and Container"
+See `/shared-data/README.md` for the complete data schema and all available helpers.
 
 ## Code Formatting
 
@@ -180,50 +379,23 @@ npm run eslint:all
 - **JSX props:** Sorted alphabetically
 - **CSS properties:** Sorted alphabetically
 
-## Git Workflow
-
-### Committing Your Changes
-
-```bash
-git add .
-git commit -m "Add site management interface"
-git push origin your-name/project-name
-```
-
-### Deploying to Multidev
-
-When you push your branch, Pantheon will automatically create a multidev environment for preview.
-
-### Keeping Your Work
-
-**Option 1: Merge to Main** (to preserve long-term)
-
-```bash
-# Create a pull request on GitHub
-# After approval, your work will be on main
-```
-
-**Option 2: Delete Your Branch** (for temporary prototypes)
-
-```bash
-git checkout main
-git branch -D your-name/project-name
-git push origin --delete your-name/project-name
-```
-
-Deleting your branch will remove your project from the multidev environment.
-
-See `/docs/GIT_WORKFLOW.md` for more details.
-
 ## Deleting a Project
 
 To remove a project completely:
 
 1. Delete the project folder:
 
+   **Terminal:**
+
    ```bash
    rm -rf projects/your-project-name
    ```
+
+   **Finder (macOS) / File Explorer (Windows):**
+
+   - Navigate to the `projects` folder in your code editor or file browser
+   - Right-click the project folder (e.g., `your-project-name`)
+   - Select "Move to Trash" (macOS) or "Delete" (Windows)
 
 2. The homepage will automatically update when you restart the dev server
 
@@ -245,28 +417,6 @@ To remove a project completely:
 - **[Designer Guide](/docs/DESIGNER_GUIDE.md)** - Detailed walkthrough for designers
 - **[Git Workflow](/docs/GIT_WORKFLOW.md)** - Git basics and branching strategy
 - **[Shared Data](/shared-data/README.md)** - Available mock data
-- **[Implementation Plan](/IMPLEMENTATION_PLAN.md)** - Technical implementation details
-
-## Resources
-
-- [PDS Toolkit React on NPM](https://www.npmjs.com/package/@pantheon-systems/pds-toolkit-react)
-- [PDS Design Tokens](https://www.npmjs.com/package/@pantheon-systems/pds-design-tokens)
-- [Next.js Documentation](https://nextjs.org/docs)
-- [Claude Code Documentation](https://docs.anthropic.com/claude/docs)
-
-## Project Status
-
-Current implementation status:
-
-- ✅ Phase 1: Next.js foundation with PDS
-- ✅ Phase 2: Metadata system
-- ✅ Phase 3: Homepage with project listing
-- ✅ Phase 4: Dynamic project routes
-- ✅ Phase 5: Shared data store
-- ✅ Phase 6: Project templates (blank & dashboard)
-- ✅ Phase 7: CLI scaffolding tool
-- ⏳ Phase 8: Example projects (optional)
-- ✅ Phase 9: Documentation
 
 ## Troubleshooting
 
@@ -291,32 +441,16 @@ npm run aggregate
 
 ### PDS Components Not Working
 
-Make sure you're using them in a Client Component with GlobalWrapper:
+**Using Claude Code (Recommended):**
 
-```typescript
-'use client'
+Ask Claude to fix the issue:
 
-import { Button, GlobalWrapper } from '@pantheon-systems/pds-toolkit-react'
+- "This component isn't working, can you fix it?"
+- "Check if all imports are correct"
 
-export default function MyPage() {
-  return (
-    <GlobalWrapper>
-      <Button>Click Me</Button>
-    </GlobalWrapper>
-  )
-}
-```
+**Note:** All project templates already include the required setup (`'use client'` and `GlobalWrapper`), so components should work immediately. If you're still having issues, ask Claude to troubleshoot.
 
-Some components (Navbar, Modal, Popover) require GlobalWrapper for context.
-
-## Support
-
-For questions or issues:
-
-1. Check the documentation above
-2. Review the example projects (when available)
-3. Ask in the team channel
-4. Consult with the team lead
+If you're writing code directly, see the "Advanced Use" section for examples.
 
 ## Contributing
 
@@ -325,8 +459,3 @@ This is an internal tool for designers. If you have suggestions for improvements
 1. Create an issue on GitHub
 2. Discuss with the team
 3. Submit a pull request
-
----
-
-**Version:** 1.0.0
-**Last Updated:** February 4, 2026

@@ -6,30 +6,33 @@ This guide explains the git workflow for working on prototypes in this project.
 
 Each designer works on their own **branch**. Think of a branch as your own copy of the project where you can make changes without affecting anyone else's work.
 
-When you push your branch to GitHub, Pantheon automatically creates a **multidev environment** - a live preview URL where you can view and share your prototype.
+The workflow has three stages:
 
-## Step-by-Step Workflow
+1. **Work locally** - Build and iterate on your local machine
+2. **Share in-progress** - Create a draft PR to get a multidev URL for feedback
+3. **Final handoff** - Request approval and merge to main
 
-### 1. Start a New Prototype
+## The Three-Stage Workflow
 
-**Switch to the main branch and get the latest changes:**
+### Stage 1: Work Locally
+
+Start building your prototype on a local branch without pushing to GitHub.
+
+**Create your branch:**
+
+Terminal:
 
 ```bash
 git checkout main
 git pull origin main
-```
-
-**Create your own branch:**
-
-```bash
 git checkout -b your-name/project-name
 ```
 
-**Example:**
+GitHub Desktop:
 
-```bash
-git checkout -b melissa/dashboard-redesign
-```
+1. Click the branch dropdown → "New Branch"
+2. Name it following the pattern: `your-name/project-name`
+3. Click "Create Branch"
 
 **Naming Convention:**
 
@@ -41,120 +44,148 @@ git checkout -b melissa/dashboard-redesign
 ✅ Good: `sarah/site-management`, `marcus/user-profiles`
 ❌ Bad: `MyBranch`, `test`, `branch1`
 
-### 2. Create Your Project
-
-Run the project generator:
+**Create your project:**
 
 ```bash
 npm run new
 ```
 
-Answer the prompts to create your project structure.
+**Work and commit locally:**
 
-### 3. Work on Your Prototype
-
-Make your changes in the `/projects/your-project-name/` folder.
-
-As you work, **commit your changes regularly:**
+Terminal:
 
 ```bash
 git add .
 git commit -m "Add site table to dashboard"
 ```
 
-**Commit Message Tips:**
+GitHub Desktop:
 
-- Start with a verb: Add, Update, Fix, Remove
-- Be specific about what changed
-- Keep it short (under 50 characters)
+1. Your changes appear in the left sidebar
+2. Add a commit message in the bottom left
+3. Click "Commit to your-name/project-name"
 
-✅ Good: `Add navigation sidebar`, `Update card layout`, `Fix table spacing`
-❌ Bad: `changes`, `wip`, `stuff`
-
-### 4. Push Your Branch
-
-Send your changes to GitHub:
+**Preview locally:**
 
 ```bash
-git push origin your-branch-name
+npm run dev
 ```
 
-**First time pushing:**
+Visit http://localhost:3000/projects/your-project-name
+
+Continue iterating locally without pushing. This is perfect for exploration and early development.
+
+### Stage 2: Share In-Progress Work
+
+When you're ready to share with other designers or product managers, create a draft pull request to get a multidev environment.
+
+**Push your branch:**
+
+Terminal:
 
 ```bash
-git push -u origin your-branch-name
+git push origin your-name/project-name
 ```
 
-The `-u` flag sets up tracking so future pushes are simpler.
+GitHub Desktop:
 
-**After first push:**
+- Click "Push origin" button in the top toolbar
+
+**Create a Draft Pull Request:**
+
+1. Go to the repository on GitHub in your web browser
+2. Click "Pull requests" → "New pull request"
+3. Select your branch to merge into `main`
+4. Add a title and description of what you're working on
+5. Click "Create **draft** pull request" (use the dropdown arrow)
+
+Alternatively, in GitHub Desktop:
+
+- Click "Preview Pull Request" button
+- Review changes and click "Create pull request"
+- This opens GitHub in your browser where you can make it a draft
+
+**Multidev environment created:**
+
+- A multidev environment is automatically created for your PR
+- You'll receive a URL to share with teammates and PMs
+- Continue pushing updates as you iterate
+- The multidev URL updates automatically with each push
+
+**Collaborate and iterate:**
+
+Terminal:
 
 ```bash
+git add .
+git commit -m "Update dashboard header"
 git push
 ```
 
-### 5. View Your Multidev Environment
+GitHub Desktop:
 
-After pushing, Pantheon will create a multidev environment. You'll get a URL like:
+1. Make your changes
+2. Commit in the app
+3. Click "Push origin"
 
+Share the multidev URL for feedback. No approval needed yet - this is your working space.
+
+### Stage 3: Final Handoff or Archive
+
+When your prototype is ready for final handoff or to be archived:
+
+**Request approval:**
+
+1. Go to your pull request on GitHub
+2. Click "Ready for review" to convert your draft PR
+3. **Request a review from `mel-miller`** (required for merge)
+4. Add final context about what this prototype demonstrates
+
+**Merge to main:**
+
+- After approval, merge the PR on GitHub
+- Your prototype is now on the main URL
+- Use the main URL for stakeholder demos and handoffs
+- The multidev branch will be cleaned up automatically
+
+## Temporary/Exploratory Work
+
+If you were just exploring and don't want to share or keep the prototype:
+
+1. **Don't create a PR** - just work locally
+2. When you're done, delete your local branch:
+
+Terminal:
+
+```bash
+git checkout main
+git pull origin main
+git branch -D your-name/project-name
 ```
-https://your-branch-name.pantheon.example.com
+
+GitHub Desktop:
+
+- Switch to the `main` branch using the branch dropdown
+- Click "Fetch origin" then "Pull origin" to get latest changes
+- Right-click your branch in the branch list
+- Select "Delete..."
+
+## Keeping Projects in Sync
+
+Periodically pull the latest changes from main to see other designers' work:
+
+Terminal:
+
+```bash
+git checkout main
+git pull origin main
 ```
 
-Share this URL with your team to get feedback!
+GitHub Desktop:
 
-### 6. Make More Changes
-
-As you continue working:
-
-1. Make changes to your files
-2. Commit the changes:
-   ```bash
-   git add .
-   git commit -m "Update dashboard header"
-   ```
-3. Push to update your multidev:
-   ```bash
-   git push
-   ```
-
-Your multidev environment will automatically update.
-
-### 7. When You're Done
-
-You have two options:
-
-**Option A: Keep Your Work (Merge to Main)**
-
-If this is a long-term prototype you want to preserve:
-
-1. Create a Pull Request on GitHub
-2. Ask a teammate to review
-3. After approval, merge to `main`
-4. Your project will be part of the main site
-
-**Option B: Temporary Work (Delete Your Branch)**
-
-If this was just for testing or a quick prototype:
-
-1. Switch back to main:
-
-   ```bash
-   git checkout main
-   ```
-
-2. Delete your local branch:
-
-   ```bash
-   git branch -D your-branch-name
-   ```
-
-3. Delete the remote branch:
-   ```bash
-   git push origin --delete your-branch-name
-   ```
-
-Your multidev environment will be removed, and your project won't appear on the main site.
+1. Switch to the `main` branch using the branch dropdown
+2. Click "Fetch origin" to check for updates
+3. Click "Pull origin" to download the latest changes
 
 ## Common Git Commands
 
@@ -196,20 +227,14 @@ This discards your changes to that file. **Be careful - this can't be undone!**
 git checkout branch-name
 ```
 
-### Get Latest Changes from Main
+## Commit Message Tips
 
-While on your branch:
+- Start with a verb: Add, Update, Fix, Remove
+- Be specific about what changed
+- Keep it short (under 50 characters)
 
-```bash
-git fetch origin main
-git merge origin/main
-```
-
-Or the shortcut:
-
-```bash
-git pull origin main
-```
+✅ Good: `Add navigation sidebar`, `Update card layout`, `Fix table spacing`
+❌ Bad: `changes`, `wip`, `stuff`
 
 ## Resolving Conflicts
 
@@ -250,8 +275,9 @@ Sometimes when you try to merge or pull, you'll get a **merge conflict**. This h
 
 ### DO:
 
+✅ Work locally first before creating a PR
+✅ Create draft PRs for in-progress work you want to share
 ✅ Commit often with clear messages
-✅ Push regularly to back up your work
 ✅ Use descriptive branch names
 ✅ Pull from main before starting new work
 ✅ Ask for help if you're stuck
@@ -318,26 +344,30 @@ git commit -m "Your message"
 ## Visual Guide
 
 ```
-main (production)
+main (production - stakeholder demos)
   |
-  |--- melissa/dashboard → multidev: dashboard.pantheon.site
+  |--- melissa/dashboard (draft PR) → multidev: dashboard.pantheon.site
+  |                                    (in-progress sharing)
   |
-  |--- sarah/site-mgmt → multidev: site-mgmt.pantheon.site
+  |--- sarah/site-mgmt (ready for review) → multidev: site-mgmt.pantheon.site
+  |                                         (awaiting approval)
   |
-  |--- marcus/user-ui → multidev: user-ui.pantheon.site
+  |--- marcus/user-ui (merged) → now on main URL
+                                 (final handoff complete)
 ```
 
-Each branch creates its own isolated environment!
+Each draft PR creates its own multidev environment for collaboration!
 
 ## Getting Help
 
 If you get stuck:
 
-1. **Check git status:** `git status`
-2. **Read the error message** - it often tells you what to do
-3. **Google the error** - git errors are common and well-documented
-4. **Ask a teammate** - don't struggle alone!
-5. **Ask in the team channel** - others might have the same question
+1. **Ask Claude Code** - If using Claude, ask for help with git commands
+2. **Check git status:** `git status`
+3. **Read the error message** - it often tells you what to do
+4. **Google the error** - git errors are common and well-documented
+5. **Ask a teammate** - don't struggle alone!
+6. **Ask in the team channel** - others might have the same question
 
 ## Useful Resources
 
