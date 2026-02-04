@@ -26,11 +26,13 @@ git checkout -b your-name/project-name
 ```
 
 **Example:**
+
 ```bash
 git checkout -b melissa/dashboard-redesign
 ```
 
 **Naming Convention:**
+
 - Start with your first name
 - Add a slash `/`
 - Then a descriptive project name
@@ -61,6 +63,7 @@ git commit -m "Add site table to dashboard"
 ```
 
 **Commit Message Tips:**
+
 - Start with a verb: Add, Update, Fix, Remove
 - Be specific about what changed
 - Keep it short (under 50 characters)
@@ -77,6 +80,7 @@ git push origin your-branch-name
 ```
 
 **First time pushing:**
+
 ```bash
 git push -u origin your-branch-name
 ```
@@ -84,6 +88,7 @@ git push -u origin your-branch-name
 The `-u` flag sets up tracking so future pushes are simpler.
 
 **After first push:**
+
 ```bash
 git push
 ```
@@ -133,11 +138,13 @@ If this is a long-term prototype you want to preserve:
 If this was just for testing or a quick prototype:
 
 1. Switch back to main:
+
    ```bash
    git checkout main
    ```
 
 2. Delete your local branch:
+
    ```bash
    git branch -D your-branch-name
    ```
@@ -215,6 +222,7 @@ Sometimes when you try to merge or pull, you'll get a **merge conflict**. This h
 
 1. Git will mark the conflicting files
 2. Open the file - you'll see markers like:
+
    ```
    <<<<<<< HEAD
    Your changes
@@ -233,6 +241,7 @@ Sometimes when you try to merge or pull, you'll get a **merge conflict**. This h
    ```
 
 **When to ask for help:**
+
 - If you're unsure which changes to keep
 - If the conflict seems complicated
 - If multiple files have conflicts
@@ -240,6 +249,7 @@ Sometimes when you try to merge or pull, you'll get a **merge conflict**. This h
 ## Best Practices
 
 ### DO:
+
 ✅ Commit often with clear messages
 ✅ Push regularly to back up your work
 ✅ Use descriptive branch names
@@ -247,6 +257,7 @@ Sometimes when you try to merge or pull, you'll get a **merge conflict**. This h
 ✅ Ask for help if you're stuck
 
 ### DON'T:
+
 ❌ Work directly on the `main` branch
 ❌ Make huge commits with many changes
 ❌ Use vague commit messages like "updates"

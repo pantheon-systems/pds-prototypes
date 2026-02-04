@@ -1,3 +1,119 @@
 {
-  "extends": ["next/core-web-vitals", "next/typescript"]
+	"settings": {
+		"react": {
+			"version": "detect"
+		},
+		"import/resolver": {
+			"typescript": true,
+			"node": true
+		}
+	},
+	"env": {
+		"browser": true,
+		"node": true
+	},
+	"extends": [
+		"next/core-web-vitals",
+		"eslint:recommended",
+		"plugin:@typescript-eslint/eslint-recommended",
+		"plugin:@typescript-eslint/recommended",
+		"plugin:import/recommended",
+		"plugin:import/typescript",
+		"plugin:prettier/recommended"
+	],
+	"parser": "@typescript-eslint/parser",
+	"plugins": [
+		"@typescript-eslint",
+		"react",
+		"import",
+		"sort-destructure-keys",
+		"typescript-sort-keys",
+		"simple-import-sort"
+	],
+	"rules": {
+		"@typescript-eslint/no-require-imports": "off",
+		"@typescript-eslint/no-unused-vars": [
+			"warn",
+			{
+				"argsIgnorePattern": "^_",
+				"varsIgnorePattern": "^_"
+			}
+		],
+		"import/order": "off",
+		"simple-import-sort/imports": [
+			"error",
+			{
+				"groups": [
+					["^react$", "^next"],
+					["^@(?!shared-data|types)", "^[^@\\.]"],
+					["^@shared-data/", "^@types/"],
+					["^\\.\\.(?!/?$)", "^\\.\\./?$"],
+					["^\\./(?=.*/)(?!/?$)", "^\\.(?!/?$)", "^\\./?$"],
+					["^.+\\.css$"]
+				]
+			}
+		],
+		"simple-import-sort/exports": "error",
+		"import/no-duplicates": "error",
+		"import/no-cycle": "off",
+		"import/newline-after-import": "error",
+		"import/no-unresolved": "off",
+		"react/jsx-sort-props": [
+			"warn",
+			{
+				"callbacksLast": false,
+				"shorthandFirst": true,
+				"ignoreCase": true,
+				"reservedFirst": true
+			}
+		],
+		"react/jsx-boolean-value": ["warn", "never"],
+		"sort-destructure-keys/sort-destructure-keys": [
+			"warn",
+			{
+				"caseSensitive": false
+			}
+		],
+		"typescript-sort-keys/interface": [
+			"warn",
+			"asc",
+			{
+				"caseSensitive": false
+			}
+		],
+		"typescript-sort-keys/string-enum": [
+			"warn",
+			"asc",
+			{
+				"caseSensitive": false
+			}
+		],
+		"@typescript-eslint/naming-convention": [
+			"warn",
+			{
+				"selector": "interface",
+				"modifiers": ["exported"],
+				"filter": {
+					"regex": "Props$",
+					"match": true
+				},
+				"format": ["PascalCase"],
+				"suffix": ["Props"]
+			},
+			{
+				"selector": "typeAlias",
+				"modifiers": ["exported"],
+				"filter": {
+					"regex": "Props$",
+					"match": true
+				},
+				"format": null,
+				"custom": {
+					"regex": "^.*Props$",
+					"match": false
+				}
+			}
+		],
+		"@typescript-eslint/consistent-type-definitions": "off"
+	}
 }

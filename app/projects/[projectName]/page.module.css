@@ -1,157 +1,161 @@
 /* Project Page Styles using PDS Design Tokens */
 
 .projectPage {
-  min-height: 100vh;
-  background: var(--pds-color-bg-default);
+	background: var(--pds-color-bg-default);
+	min-height: 100vh;
 }
 
 /* Header Wrapper - Contains both header and toggle */
 .headerWrapper {
-  position: sticky;
-  top: 0;
-  z-index: 10;
-  background: transparent;
+	background: transparent;
+	position: sticky;
+	top: 0;
+	z-index: 10;
 }
 
 /* Project Header - Compact single bar with nav and metadata */
 .projectHeader {
-  display: flex;
-  align-items: center;
-  gap: var(--pds-spacing-m);
-  padding: var(--pds-spacing-xs) var(--pds-spacing-xl);
-  padding-right: calc(var(--pds-spacing-xl) + 48px); /* Make room for toggle button */
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.12);
-  transition: all 0.3s ease;
-  max-height: 100px;
-  opacity: 1;
+	align-items: center;
+	box-shadow: 0 1px 4px rgba(0, 0, 0, 0.12);
+	display: flex;
+	gap: var(--pds-spacing-m);
+	max-height: 100px;
+	opacity: 1;
+	padding: var(--pds-spacing-xs) var(--pds-spacing-xl);
+	padding-right: calc(
+		var(--pds-spacing-xl) + 48px
+	); /* Make room for toggle button */
+	transition: all 0.3s ease;
 }
 
 /* Default/Blank template - uses secondary background */
 .projectHeaderDefault {
-  background: var(--pds-color-bg-default-secondary);
+	background: var(--pds-color-bg-default-secondary);
 }
 
 /* Dashboard template - uses default background */
 .projectHeaderDashboard {
-  background: var(--pds-color-bg-default);
+	background: var(--pds-color-bg-default);
 }
 
 .projectHeaderHidden {
-  max-height: 0;
-  opacity: 0;
-  padding-top: 0;
-  padding-bottom: 0;
-  overflow: hidden;
-  box-shadow: none;
+	box-shadow: none;
+	max-height: 0;
+	opacity: 0;
+	overflow: hidden;
+	padding-bottom: 0;
+	padding-top: 0;
 }
 
 .projectHeaderLeft {
-  flex-shrink: 0;
+	flex-shrink: 0;
 }
 
 .projectHeaderRight {
-  display: flex;
-  align-items: center;
-  gap: var(--pds-spacing-xs);
-  font-size: var(--pds-typography-size-s);
-  color: var(--pds-color-fg-default-secondary);
-  margin-left: auto;
-  padding-right: var(--pds-spacing-m);
+	align-items: center;
+	color: var(--pds-color-fg-default-secondary);
+	display: flex;
+	font-size: var(--pds-typography-size-s);
+	gap: var(--pds-spacing-xs);
+	margin-left: auto;
+	padding-right: var(--pds-spacing-m);
 }
 
 .projectHeaderToggle {
-  position: absolute;
-  top: var(--pds-spacing-xs);
-  right: var(--pds-spacing-xl);
-  z-index: 11;
+	position: absolute;
+	right: var(--pds-spacing-xl);
+	top: var(--pds-spacing-xs);
+	z-index: 11;
 }
 
 .toggleHidden {
-  position: fixed;
-  opacity: 0;
-  transition: opacity 0.2s ease;
+	opacity: 0;
+	position: fixed;
+	transition: opacity 0.2s ease;
 }
 
 .toggleHidden:hover,
 .toggleHidden:focus-within,
 .toggleHidden:has(:focus),
 .toggleHidden:has(:focus-visible) {
-  opacity: 1;
+	opacity: 1;
 }
 
 .projectTitle {
-  font-size: var(--pds-typography-size-s);
-  font-weight: var(--pds-typography-fw-medium);
-  color: var(--pds-color-fg-default);
+	color: var(--pds-color-fg-default);
+	font-size: var(--pds-typography-size-s);
+	font-weight: var(--pds-typography-fw-medium);
 }
 
 .projectCreator {
-  color: var(--pds-color-fg-default-secondary);
+	color: var(--pds-color-fg-default-secondary);
 }
 
 .metaSeparator {
-  opacity: 0.5;
+	opacity: 0.5;
 }
 
 .projectTemplate {
-  text-transform: capitalize;
-  color: var(--pds-color-fg-default-secondary);
+	color: var(--pds-color-fg-default-secondary);
+	text-transform: capitalize;
 }
 
 .content {
-  /* No default padding - projects can add their own if needed */
-  /* DashboardGlobal and other PDS layouts provide their own spacing */
+	/* No default padding - projects can add their own if needed */
+	/* DashboardGlobal and other PDS layouts provide their own spacing */
 }
 
 /* Empty State */
 .emptyState {
-  text-align: center;
-  padding: var(--pds-spacing-2xl);
-  background: var(--pds-color-bg-default-secondary);
-  border-radius: var(--pds-border-radius-container);
-  border: 2px dashed var(--pds-color-border-default);
-  max-width: 600px;
-  margin: 0 auto;
+	background: var(--pds-color-bg-default-secondary);
+	border: 2px dashed var(--pds-color-border-default);
+	border-radius: var(--pds-border-radius-container);
+	margin: 0 auto;
+	max-width: 600px;
+	padding: var(--pds-spacing-2xl);
+	text-align: center;
 }
 
 .emptyState h2 {
-  font-size: var(--pds-typography-size-xl);
-  color: var(--pds-color-fg-default);
-  margin-bottom: var(--pds-spacing-xs);
+	color: var(--pds-color-fg-default);
+	font-size: var(--pds-typography-size-xl);
+	margin-bottom: var(--pds-spacing-xs);
 }
 
 .emptyState p {
-  color: var(--pds-color-fg-default-secondary);
-  margin-bottom: var(--pds-spacing-2xs);
-  line-height: var(--pds-typography-lh-m);
+	color: var(--pds-color-fg-default-secondary);
+	line-height: var(--pds-typography-lh-m);
+	margin-bottom: var(--pds-spacing-2xs);
 }
 
 .emptyState code {
-  background: var(--pds-color-bg-reverse);
-  color: var(--pds-color-fg-reverse);
-  padding: var(--pds-spacing-5xs) var(--pds-spacing-2xs);
-  border-radius: var(--pds-border-radius-default);
-  font-family: var(--pds-typography-ff-mono);
-  font-size: var(--pds-typography-size-s);
+	background: var(--pds-color-bg-reverse);
+	border-radius: var(--pds-border-radius-default);
+	color: var(--pds-color-fg-reverse);
+	font-family: var(--pds-typography-ff-mono);
+	font-size: var(--pds-typography-size-s);
+	padding: var(--pds-spacing-5xs) var(--pds-spacing-2xs);
 }
 
 /* Responsive */
 @media (max-width: 768px) {
-  .projectHeader {
-    padding: var(--pds-spacing-xs) var(--pds-spacing-m);
-    padding-right: calc(var(--pds-spacing-m) + 48px); /* Make room for toggle button */
-  }
+	.projectHeader {
+		padding: var(--pds-spacing-xs) var(--pds-spacing-m);
+		padding-right: calc(
+			var(--pds-spacing-m) + 48px
+		); /* Make room for toggle button */
+	}
 
-  .projectHeaderToggle {
-    right: var(--pds-spacing-m);
-    top: var(--pds-spacing-xs);
-  }
+	.projectHeaderToggle {
+		right: var(--pds-spacing-m);
+		top: var(--pds-spacing-xs);
+	}
 
-  .projectHeaderRight {
-    flex-wrap: wrap;
-  }
+	.projectHeaderRight {
+		flex-wrap: wrap;
+	}
 
-  .content {
-    padding: var(--pds-spacing-m);
-  }
+	.content {
+		padding: var(--pds-spacing-m);
+	}
 }

@@ -34,11 +34,13 @@ dashboard-design/
 ### How to Customize
 
 1. **Modify Navigation Items**
+
    - Edit the nav buttons in `page.tsx`
    - Add/remove sections as needed
    - Update the `activeNav` state handling
 
 2. **Add Content to Sections**
+
    - Find the section you want to edit (e.g., `{activeNav === 'sites' && ...}`)
    - Replace placeholder content with your prototype
    - Import PDS components and shared data as needed
@@ -82,6 +84,7 @@ import { sites } from '@/shared-data'
 ### Viewing Your Prototype
 
 Run the development server:
+
 ```bash
 npm run dev
 ```

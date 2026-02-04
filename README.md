@@ -4,30 +4,33 @@ A prototyping playground for designers to build interactive prototypes using the
 
 ## Overview
 
-This Next.js application provides a collaborative space for designers to create, share, and iterate on prototypes using real PDS components. Each designer works on their own branch, and can use Pantheon multidev environments to preview and share their work.
+This Next.js application provides a collaborative space for designers to create, share, and iterate on prototypes using real PDS components. Each designer may work on their own branch, and can use Pantheon multidev environments to preview and share their work.
 
 ## Quick Start
 
 ### Prerequisites
 
-- Node.js 18 or higher
+- Node.js 22 or higher
 - Git installed and configured
 - Access to this repository
 
 ### Installation
 
 1. Clone the repository:
+
    ```bash
    git clone <repository-url>
    cd pds-prototypes
    ```
 
 2. Install dependencies:
+
    ```bash
    npm install
    ```
 
 3. Start the development server:
+
    ```bash
    npm run dev
    ```
@@ -51,6 +54,7 @@ npm run new
 ```
 
 You'll be prompted for:
+
 - **Project name** - lowercase-with-dashes (e.g., `user-dashboard`)
 - **Project title** - Display name (e.g., `User Dashboard`)
 - **Description** - What you're prototyping
@@ -139,6 +143,43 @@ This project has the PDS MCP server configured. You can ask Claude to:
 - "Add an IndicatorBadge to show site status"
 - "Wrap this page in GlobalWrapper and Container"
 
+## Code Formatting
+
+This project uses Prettier and ESLint to maintain consistent code style.
+
+### VSCode Auto-Formatting
+
+If you're using VSCode, formatting will happen automatically:
+
+- **On Save** - Files are formatted with Prettier every time you save
+- **On Commit** - Pre-commit hook runs Prettier and ESLint fixes
+
+The project includes VSCode workspace settings (`.vscode/settings.json`) that enable format-on-save. When you open the project, VSCode will prompt you to install the recommended extensions:
+
+- Prettier - Code formatter
+- ESLint - JavaScript/TypeScript linter
+
+### Manual Formatting
+
+You can also format code manually:
+
+```bash
+# Format all files and fix lint issues
+npm run format:fix
+
+# Run ESLint only
+npm run eslint:all
+```
+
+### Code Style
+
+- **Quotes:** Single quotes (including JSX)
+- **Indentation:** Tabs (not spaces)
+- **Semicolons:** Required
+- **Import sorting:** Automatic (React/Next first, then external, then internal)
+- **JSX props:** Sorted alphabetically
+- **CSS properties:** Sorted alphabetically
+
 ## Git Workflow
 
 ### Committing Your Changes
@@ -156,12 +197,14 @@ When you push your branch, Pantheon will automatically create a multidev environ
 ### Keeping Your Work
 
 **Option 1: Merge to Main** (to preserve long-term)
+
 ```bash
 # Create a pull request on GitHub
 # After approval, your work will be on main
 ```
 
 **Option 2: Delete Your Branch** (for temporary prototypes)
+
 ```bash
 git checkout main
 git branch -D your-name/project-name
@@ -177,6 +220,7 @@ See `/docs/GIT_WORKFLOW.md` for more details.
 To remove a project completely:
 
 1. Delete the project folder:
+
    ```bash
    rm -rf projects/your-project-name
    ```
@@ -185,14 +229,16 @@ To remove a project completely:
 
 ## Available Commands
 
-| Command | Description |
-|---------|-------------|
-| `npm run dev` | Start development server |
-| `npm run build` | Build for production |
-| `npm run start` | Start production server |
-| `npm run new` | Create a new project |
-| `npm run aggregate` | Manually update project metadata |
-| `npm run lint` | Run ESLint |
+| Command              | Description                          |
+| -------------------- | ------------------------------------ |
+| `npm run dev`        | Start development server             |
+| `npm run build`      | Build for production                 |
+| `npm run start`      | Start production server              |
+| `npm run new`        | Create a new project                 |
+| `npm run aggregate`  | Manually update project metadata     |
+| `npm run lint`       | Run Next.js linter                   |
+| `npm run eslint:all` | Run ESLint on all files              |
+| `npm run format:fix` | Format all files and fix lint issues |
 
 ## Documentation
 

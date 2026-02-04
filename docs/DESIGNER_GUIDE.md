@@ -7,6 +7,7 @@ Welcome! This guide will help you create prototypes using the Pantheon Design Sy
 ### Prerequisites
 
 Make sure you have:
+
 - [ ] Node.js installed (version 22 or higher)
 - [ ] Git configured with your name and email
 - [ ] Access to this repository
@@ -16,6 +17,7 @@ Make sure you have:
 ### Creating Your First Prototype
 
 1. **Set up the project:**
+
    ```bash
    git clone <repository-url>
    cd pds-prototypes
@@ -23,16 +25,19 @@ Make sure you have:
    ```
 
 2. **Create your branch:**
+
    ```bash
    git checkout -b your-name/my-first-prototype
    ```
 
 3. **Generate your project:**
+
    ```bash
    npm run new
    ```
 
 4. **Start the dev server:**
+
    ```bash
    npm run dev
    ```
@@ -53,6 +58,7 @@ If you have Claude Code installed, the PDS MCP server is already configured for 
 ### Example Prompts
 
 **Adding Components:**
+
 > "Add a Table component showing all sites from shared data"
 
 > "Create a Card with a user's name, email, and avatar"
@@ -60,6 +66,7 @@ If you have Claude Code installed, the PDS MCP server is already configured for 
 > "Add a Button that says 'Create New Site'"
 
 **Styling:**
+
 > "Style this heading using PDS design tokens"
 
 > "Add spacing between these elements using PDS spacing tokens"
@@ -67,6 +74,7 @@ If you have Claude Code installed, the PDS MCP server is already configured for 
 > "Make this layout responsive"
 
 **Using Data:**
+
 > "Import the sites data and display it in a list"
 
 > "Filter the sites to only show WordPress sites"
@@ -74,6 +82,7 @@ If you have Claude Code installed, the PDS MCP server is already configured for 
 > "Show the first 5 users in a grid"
 
 **Debugging:**
+
 > "Why isn't this component rendering?"
 
 > "Fix the TypeScript error in this file"
@@ -87,12 +96,14 @@ If you have Claude Code installed, the PDS MCP server is already configured for 
 Use this when you're starting from scratch or want maximum flexibility.
 
 **What you get:**
+
 - Empty page component
 - Basic CSS file with PDS tokens
 - Helpful comments
 - README with tips
 
 **Best for:**
+
 - Custom layouts
 - Experimental UIs
 - Learning PDS components
@@ -102,6 +113,7 @@ Use this when you're starting from scratch or want maximum flexibility.
 Use this when you need a standard dashboard layout with navigation.
 
 **What you get:**
+
 - Pre-built sidebar navigation
 - 4 nav sections (Overview, Sites, Users, Settings)
 - Empty content areas ready for your work
@@ -109,6 +121,7 @@ Use this when you need a standard dashboard layout with navigation.
 - Active state management
 
 **Best for:**
+
 - Admin interfaces
 - Management dashboards
 - Site/user listings
@@ -120,24 +133,24 @@ Use this when you need a standard dashboard layout with navigation.
 
 The PDS Toolkit React library includes many components. Common ones:
 
-| Component | Purpose | Example |
-|-----------|---------|---------|
-| `Button` | Buttons and actions | `<Button>Click me</Button>` |
-| `Card` | Content containers | `<Card>Content</Card>` |
-| `Table` | Data tables | `<Table headers={...} rowData={...} />` |
-| `IndicatorBadge` | Status indicators | `<IndicatorBadge label="Active" color="success" />` |
-| `Container` | Layout container | `<Container>...</Container>` |
-| `GlobalWrapper` | Context provider | `<GlobalWrapper>...</GlobalWrapper>` |
-| `Navbar` | Navigation bar | `<Navbar logoDisplayType="sub-brand" />` |
-| `Modal` | Dialogs | `<Modal>...</Modal>` |
-| `TextInput` | Form inputs | `<TextInput label="Name" />` |
+| Component        | Purpose             | Example                                             |
+| ---------------- | ------------------- | --------------------------------------------------- |
+| `Button`         | Buttons and actions | `<Button>Click me</Button>`                         |
+| `Card`           | Content containers  | `<Card>Content</Card>`                              |
+| `Table`          | Data tables         | `<Table headers={...} rowData={...} />`             |
+| `IndicatorBadge` | Status indicators   | `<IndicatorBadge label="Active" color="success" />` |
+| `Container`      | Layout container    | `<Container>...</Container>`                        |
+| `GlobalWrapper`  | Context provider    | `<GlobalWrapper>...</GlobalWrapper>`                |
+| `Navbar`         | Navigation bar      | `<Navbar logoDisplayType="sub-brand" />`            |
+| `Modal`          | Dialogs             | `<Modal>...</Modal>`                                |
+| `TextInput`      | Form inputs         | `<TextInput label="Name" />`                        |
 
 **Finding more:** Ask Claude "What PDS components are available?" or check the NPM package.
 
 ### Importing Components
 
 ```typescript
-import { Button, Card, Table } from '@pantheon-systems/pds-toolkit-react'
+import { Button, Card, Table } from '@pantheon-systems/pds-toolkit-react';
 ```
 
 ### Client vs Server Components
@@ -145,9 +158,9 @@ import { Button, Card, Table } from '@pantheon-systems/pds-toolkit-react'
 PDS components need to be used in **Client Components**. Add this at the top of your file:
 
 ```typescript
-'use client'
+'use client';
 
-import { Button } from '@pantheon-systems/pds-toolkit-react'
+import { Button } from '@pantheon-systems/pds-toolkit-react';
 // ... rest of your code
 ```
 
@@ -173,6 +186,7 @@ export default function MyPage() {
 ```
 
 **When to use GlobalWrapper:**
+
 - When using Navbar, Modal, Popover, or other overlay components
 - Generally at the top level of your page component
 
@@ -205,13 +219,13 @@ export default function MyComponent() {
 
 ```typescript
 import {
-  getActiveUsers,        // Filter to active users
-  getActiveSites,        // Filter to active sites
-  getFrozenSites,        // Filter to frozen sites
-  getSitesByUser,        // Filter by user in charge
-  getSitesByUpstream,    // Filter by upstream (WordPress, Drupal, etc.)
-  getSitesByPlan         // Filter by plan (Performance, Elite, etc.)
-} from '@/shared-data'
+	getActiveUsers, // Filter to active users
+	getActiveSites, // Filter to active sites
+	getFrozenSites, // Filter to frozen sites
+	getSitesByUser, // Filter by user in charge
+	getSitesByUpstream, // Filter by upstream (WordPress, Drupal, etc.)
+	getSitesByPlan, // Filter by plan (Performance, Elite, etc.)
+} from '@/shared-data';
 ```
 
 ### Creating Your Own Data
@@ -221,7 +235,7 @@ import {
 3. Import them in your components
 
 ```typescript
-import customData from './data/my-data.json'
+import customData from './data/my-data.json';
 ```
 
 ## Styling with PDS Tokens
@@ -231,12 +245,14 @@ Use PDS design tokens instead of hard-coded values.
 ### Common Tokens
 
 **Spacing:**
+
 ```css
 padding: var(--pds-spacing-m);
 margin-bottom: var(--pds-spacing-xl);
 ```
 
 **Typography:**
+
 ```css
 font-size: var(--pds-typography-size-l);
 font-weight: var(--pds-typography-fw-semibold);
@@ -244,6 +260,7 @@ color: var(--pds-color-fg-default);
 ```
 
 **Colors:**
+
 ```css
 color: var(--pds-color-fg-default);
 background: var(--pds-color-bg-default);
@@ -251,6 +268,7 @@ border-color: var(--pds-color-border-default);
 ```
 
 **Borders:**
+
 ```css
 border-radius: var(--pds-border-radius-default);
 border-width: var(--pds-border-width-default);
@@ -322,9 +340,9 @@ export default function UserGrid() {
 ```css
 /* page.module.css */
 .grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: var(--pds-spacing-m);
+	display: grid;
+	gap: var(--pds-spacing-m);
+	grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
 }
 ```
 
@@ -349,12 +367,14 @@ Visit: http://localhost:3000/projects/your-project
 ### Sharing via Multidev
 
 1. Commit your changes:
+
    ```bash
    git add .
    git commit -m "Add site management interface"
    ```
 
 2. Push your branch:
+
    ```bash
    git push origin your-branch-name
    ```
@@ -369,11 +389,12 @@ Edit your project's `metadata.json`:
 
 ```json
 {
-  "status": "review"  // Options: "in-progress", "review", "ready", "archived"
+	"status": "review" // Options: "in-progress", "review", "ready", "archived"
 }
 ```
 
 **Status Options:**
+
 - `in-progress` - Actively working on it
 - `review` - Ready for feedback
 - `ready` - Ready for handoff
@@ -388,9 +409,9 @@ Restart the dev server to see changes on the homepage.
 Did you add `'use client'` at the top?
 
 ```typescript
-'use client'
+'use client';
 
-import { Button } from '@pantheon-systems/pds-toolkit-react'
+import { Button } from '@pantheon-systems/pds-toolkit-react';
 ```
 
 ### Styles Not Applying
@@ -411,10 +432,10 @@ Make sure you imported it correctly:
 
 ```typescript
 // ✅ Correct
-import { sites } from '@/shared-data'
+import { sites } from '@/shared-data';
 
 // ❌ Wrong
-import sites from '@/shared-data/sites.json'
+import sites from '@/shared-data/sites.json';
 ```
 
 ### Build Errors

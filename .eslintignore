@@ -1,0 +1,12 @@
+# Auto-generated files
+next-env.d.ts
+.next
+out
+node_modules
+
+# Build artifacts
+*.d.ts
+
+# Plop templates
+templates/**/*.hbs
+__generators__

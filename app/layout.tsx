@@ -1,20 +1,21 @@
-import type { Metadata } from 'next'
-import '@pantheon-systems/pds-toolkit-react/css/pds-core.css'
-import './globals.css'
+import type { Metadata } from 'next';
+
+import '@pantheon-systems/pds-toolkit-react/css/pds-core.css';
+import './globals.css';
 
 export const metadata: Metadata = {
-  title: 'PDS Prototypes',
-  description: 'Designer prototyping playground using Pantheon Design System',
-}
+	title: 'PDS Prototypes',
+	description: 'Designer prototyping playground using Pantheon Design System',
+};
 
 export default function RootLayout({
-  children,
+	children,
 }: {
-  children: React.ReactNode
+	children: React.ReactNode;
 }) {
-  return (
-    <html lang="en">
-      <body>{children}</body>
-    </html>
-  )
+	return (
+		<html lang='en'>
+			<body>{children}</body>
+		</html>
+	);
 }

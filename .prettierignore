@@ -1,0 +1,16 @@
+#### packages ####
+node_modules
+
+#### Next.js ####
+.next
+out
+
+#### Plop ####
+__generators__
+templates/**/*.hbs
+
+### Other #####
+.gitignore
+.npmrc
+.nvmrc
+projects/.projects-metadata.json

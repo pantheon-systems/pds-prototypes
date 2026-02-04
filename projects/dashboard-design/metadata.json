@@ -1,9 +1,9 @@
 {
-  "id": "dashboard-design",
-  "title": "Dashboard design",
-  "description": "design work for the dashboard template",
-  "creator": "mel-miller",
-  "createdDate": "2026-02-04",
-  "status": "in-progress",
-  "template": "dashboard"
+	"id": "dashboard-design",
+	"title": "Dashboard design",
+	"description": "design work for the dashboard template",
+	"creator": "mel-miller",
+	"createdDate": "2026-02-04",
+	"status": "in-progress",
+	"template": "dashboard"
 }

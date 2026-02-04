@@ -5,9 +5,11 @@ This directory contains mock data that can be used across all prototypes in this
 ## Available Data
 
 ### Users
+
 Mock user data for testing user lists, profiles, and authentication flows.
 
 **Fields:**
+
 - `id` - Unique identifier
 - `name` - Full name
 - `email` - Email address
@@ -18,9 +20,11 @@ Mock user data for testing user lists, profiles, and authentication flows.
 - `joinDate` - Account creation date
 
 ### Sites
+
 Mock site data for testing dashboard views and site management interfaces. **40 total sites** with varied configurations.
 
 **Fields:**
+
 - `id` - Unique identifier
 - `name` - Site name
 - `created` - Creation date (formatted as "Month Day, Year")
@@ -32,6 +36,7 @@ Mock site data for testing dashboard views and site management interfaces. **40 
 - `status` - Current status (Active, Frozen)
 
 **Upstream Options:**
+
 - Drupal (Composer Managed)
 - WordPress
 - WordPress Multisite
@@ -48,16 +53,17 @@ Mock site data for testing dashboard views and site management interfaces. **40 
 import { users, sites } from '@/shared-data'
 
 export default function MyComponent() {
-  return (
-    <div>
-      <h2>Sites ({sites.length})</h2>
-      {sites.map(site => (
-        <div key={site.id}>
-          {site.name} - {site.upstream} - {site.plan}
-        </div>
-      ))}
-    </div>
-  )
+return (
+
+<div>
+<h2>Sites ({sites.length})</h2>
+{sites.map(site => (
+<div key={site.id}>
+{site.name} - {site.upstream} - {site.plan}
+</div>
+))}
+</div>
+)
 }
 \`\`\`
 
@@ -65,32 +71,33 @@ export default function MyComponent() {
 
 \`\`\`typescript
 import {
-  getActiveUsers,
-  getActiveSites,
-  getFrozenSites,
-  getSitesByUser,
-  getSitesByUpstream,
-  getSitesByPlan,
-  getUserById,
-  getSiteById
+getActiveUsers,
+getActiveSites,
+getFrozenSites,
+getSitesByUser,
+getSitesByUpstream,
+getSitesByPlan,
+getUserById,
+getSiteById
 } from '@/shared-data'
 
 export default function Dashboard() {
-  const activeUsers = getActiveUsers()
-  const activeSites = getActiveSites()
-  const wordPressSites = getSitesByUpstream('WordPress')
-  const sarahsSites = getSitesByUser('Sarah Chen')
-  const performanceSites = getSitesByPlan('Performance Large')
+const activeUsers = getActiveUsers()
+const activeSites = getActiveSites()
+const wordPressSites = getSitesByUpstream('WordPress')
+const sarahsSites = getSitesByUser('Sarah Chen')
+const performanceSites = getSitesByPlan('Performance Large')
 
-  return (
-    <div>
-      <h2>Active Users: {activeUsers.length}</h2>
-      <h2>Active Sites: {activeSites.length}</h2>
-      <h2>WordPress Sites: {wordPressSites.length}</h2>
-      <h2>Sarah&apos;s Sites: {sarahsSites.length}</h2>
-      <h2>Performance Large Sites: {performanceSites.length}</h2>
-    </div>
-  )
+return (
+
+<div>
+<h2>Active Users: {activeUsers.length}</h2>
+<h2>Active Sites: {activeSites.length}</h2>
+<h2>WordPress Sites: {wordPressSites.length}</h2>
+<h2>Sarah&apos;s Sites: {sarahsSites.length}</h2>
+<h2>Performance Large Sites: {performanceSites.length}</h2>
+</div>
+)
 }
 \`\`\`
 
@@ -100,12 +107,12 @@ export default function Dashboard() {
 import type { User, Site } from '@/shared-data'
 
 interface MyComponentProps {
-  user: User
-  sites: Site[]
+user: User
+sites: Site[]
 }
 
 export default function MyComponent({ user, sites }: MyComponentProps) {
-  // Your component code
+// Your component code
 }
 \`\`\`
 
@@ -119,18 +126,18 @@ import { sites } from '@/shared-data'
 import type { Site } from '@/shared-data'
 
 export default function SiteList() {
-  const [selectedSite, setSelectedSite] = useState<Site | null>(null)
+const [selectedSite, setSelectedSite] = useState<Site | null>(null)
 
-  return (
-    <div>
-      {sites.map(site => (
-        <button
-          key={site.id}
-          onClick={() => setSelectedSite(site)}
-        >
-          {site.name}
-        </button>
-      ))}
+return (
+
+<div>
+{sites.map(site => (
+<button
+key={site.id}
+onClick={() => setSelectedSite(site)} >
+{site.name}
+</button>
+))}
 
       {selectedSite && (
         <div>
@@ -143,7 +150,8 @@ export default function SiteList() {
         </div>
       )}
     </div>
-  )
+
+)
 }
 \`\`\`
 

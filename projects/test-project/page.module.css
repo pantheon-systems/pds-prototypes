@@ -1,15 +1,15 @@
 .container {
-  padding: var(--pds-spacing-xl);
+	padding: var(--pds-spacing-xl);
 }
 
 .container h2 {
-  font-size: var(--pds-typography-size-xl);
-  color: var(--pds-color-fg-default);
-  margin-bottom: var(--pds-spacing-m);
+	color: var(--pds-color-fg-default);
+	font-size: var(--pds-typography-size-xl);
+	margin-bottom: var(--pds-spacing-m);
 }
 
 .container p {
-  color: var(--pds-color-fg-default-secondary);
-  line-height: var(--pds-typography-lh-m);
-  margin-bottom: var(--pds-spacing-xs);
+	color: var(--pds-color-fg-default-secondary);
+	line-height: var(--pds-typography-lh-m);
+	margin-bottom: var(--pds-spacing-xs);
 }
