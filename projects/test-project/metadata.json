@@ -1,0 +1,9 @@
+{
+  "id": "test-project",
+  "title": "Test Project",
+  "description": "A test project to verify metadata aggregation",
+  "creator": "System Test",
+  "createdDate": "2026-02-03",
+  "status": "in-progress",
+  "template": "blank"
+}

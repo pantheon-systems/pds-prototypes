@@ -1,0 +1,59 @@
+# {{title}}
+
+**Creator:** {{creator}}
+**Created:** {{createdDate}}
+**Template:** Blank
+**Status:** {{status}}
+
+## Description
+
+{{description}}
+
+## Getting Started
+
+This project was created from the blank template. You have a clean slate to build your prototype.
+
+### Project Structure
+
+```
+{{name}}/
+├── page.tsx           # Main prototype page
+├── page.module.css    # Page styles using PDS tokens
+├── metadata.json      # Project metadata
+└── README.md          # This file
+```
+
+### Next Steps
+
+1. **Add PDS Components**
+   ```typescript
+   import { Button, Card, Table } from '@pantheon-systems/pds-toolkit-react'
+   ```
+
+2. **Use Shared Data**
+   ```typescript
+   import { users, sites } from '@/shared-data'
+   ```
+
+3. **Create Your Own Components**
+   - Create a `components/` folder
+   - Add reusable components for your prototype
+
+4. **Add Mock Data**
+   - Create a `data/` folder
+   - Add JSON files with prototype-specific data
+
+### Helpful Resources
+
+- [PDS Toolkit React Components](https://www.npmjs.com/package/@pantheon-systems/pds-toolkit-react)
+- [Shared Data Documentation](/shared-data/README.md)
+- [Designer Guide](/docs/DESIGNER_GUIDE.md)
+
+### Viewing Your Prototype
+
+Run the development server:
+```bash
+npm run dev
+```
+
+Then visit: http://localhost:3000/projects/{{name}}

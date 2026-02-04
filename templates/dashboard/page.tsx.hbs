@@ -1,0 +1,94 @@
+'use client'
+
+import { useState } from 'react'
+import styles from './page.module.css'
+
+export default function {{pascalCase name}}() {
+  const [activeNav, setActiveNav] = useState('overview')
+
+  return (
+    <div className={styles.dashboardLayout}>
+      {/* Sidebar Navigation */}
+      <aside className={styles.sidebar}>
+        <div className={styles.sidebarHeader}>
+          <h2>{{title}}</h2>
+        </div>
+
+        <nav className={styles.nav}>
+          <button
+            className={activeNav === 'overview' ? styles.navItemActive : styles.navItem}
+            onClick={() => setActiveNav('overview')}
+          >
+            Overview
+          </button>
+          <button
+            className={activeNav === 'sites' ? styles.navItemActive : styles.navItem}
+            onClick={() => setActiveNav('sites')}
+          >
+            Sites
+          </button>
+          <button
+            className={activeNav === 'users' ? styles.navItemActive : styles.navItem}
+            onClick={() => setActiveNav('users')}
+          >
+            Users
+          </button>
+          <button
+            className={activeNav === 'settings' ? styles.navItemActive : styles.navItem}
+            onClick={() => setActiveNav('settings')}
+          >
+            Settings
+          </button>
+        </nav>
+      </aside>
+
+      {/* Main Content Area */}
+      <main className={styles.mainContent}>
+        <header className={styles.pageHeader}>
+          <h1>Welcome to {{title}}</h1>
+          <p>Start building your dashboard content here.</p>
+        </header>
+
+        <div className={styles.content}>
+          {/*
+            🎨 This is your canvas! Add your prototype content here.
+
+            Tips:
+            - Import PDS components: import { Card, Table, Button } from '@pantheon-systems/pds-toolkit-react'
+            - Use shared data: import { users, sites } from '@/shared-data'
+            - The activeNav state tells you which nav item is selected
+            - Replace these comments with your actual dashboard content
+          */}
+
+          {activeNav === 'overview' && (
+            <div>
+              <h2>Overview</h2>
+              <p>Add overview content here...</p>
+            </div>
+          )}
+
+          {activeNav === 'sites' && (
+            <div>
+              <h2>Sites</h2>
+              <p>Add sites content here...</p>
+            </div>
+          )}
+
+          {activeNav === 'users' && (
+            <div>
+              <h2>Users</h2>
+              <p>Add users content here...</p>
+            </div>
+          )}
+
+          {activeNav === 'settings' && (
+            <div>
+              <h2>Settings</h2>
+              <p>Add settings content here...</p>
+            </div>
+          )}
+        </div>
+      </main>
+    </div>
+  )
+}
