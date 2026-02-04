@@ -41,14 +41,22 @@ export const getActiveUsers = (): User[] => {
   return users.filter(user => user.status === 'active')
 }
 
-export const getLiveSites = (): Site[] => {
-  return sites.filter(site => site.status === 'live')
+export const getActiveSites = (): Site[] => {
+  return sites.filter(site => site.status === 'Active')
 }
 
-export const getSitesByOwner = (ownerName: string): Site[] => {
-  return sites.filter(site => site.owner === ownerName)
+export const getFrozenSites = (): Site[] => {
+  return sites.filter(site => site.status === 'Frozen')
 }
 
-export const getSitesByType = (siteType: 'WordPress' | 'Drupal' | 'Next.js'): Site[] => {
-  return sites.filter(site => site.siteType === siteType)
+export const getSitesByUser = (userName: string): Site[] => {
+  return sites.filter(site => site.userInCharge === userName)
+}
+
+export const getSitesByUpstream = (upstream: string): Site[] => {
+  return sites.filter(site => site.upstream === upstream)
+}
+
+export const getSitesByPlan = (plan: string): Site[] => {
+  return sites.filter(site => site.plan === plan)
 }

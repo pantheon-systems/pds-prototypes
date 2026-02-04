@@ -13,15 +13,38 @@ export interface User {
   joinDate: string
 }
 
+export type SiteUpstream =
+  | 'Drupal (Composer Managed)'
+  | 'WordPress'
+  | 'Drupal 7'
+  | 'Drupal 8'
+  | 'WordPress Multisite'
+  | 'Empty Upstream'
+  | 'nextjs 15'
+  | ''  // blank
+
+export type SitePlan =
+  | 'Sandbox'
+  | 'Performance Medium'
+  | 'Basic'
+  | 'Performance Extra Large'
+  | 'Performance Small'
+  | 'Performance Large'
+  | 'Elite'
+  | 'Performance 2XL'
+  | 'Elite Custom Super'
+  | 'Elite Starter'
+
+export type SiteStatus = 'Frozen' | 'Active'
+
 export interface Site {
   id: string
   name: string
-  siteType: 'WordPress' | 'Drupal' | 'Next.js'
-  status: 'live' | 'development' | 'frozen' | 'inactive'
-  environment: 'production' | 'staging' | 'dev'
-  created: string
-  lastDeployed: string
-  owner: string
-  plan: 'Basic' | 'Performance' | 'Elite'
-  region: 'US' | 'EU' | 'AU'
+  created: string  // e.g., "February 15th, 2023"
+  userInCharge: string
+  upstream: SiteUpstream
+  plan: SitePlan
+  monthlyVisitsUsed: string
+  monthlyVisitsAllowed: string
+  status: SiteStatus
 }
