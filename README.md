@@ -85,33 +85,41 @@ projects/your-project-name/
 Import components from the PDS library:
 
 ```typescript
-import { Button, Card, Table } from '@pantheon-systems/pds-toolkit-react'
+'use client'
+
+import { Button, Card, Container, GlobalWrapper } from '@pantheon-systems/pds-toolkit-react'
 
 export default function MyPrototype() {
   return (
-    <div>
-      <Card>
-        <h2>Hello PDS!</h2>
-        <Button>Click Me</Button>
-      </Card>
-    </div>
+    <GlobalWrapper>
+      <Container>
+        <Card>
+          <h2>Hello PDS!</h2>
+          <Button>Click Me</Button>
+        </Card>
+      </Container>
+    </GlobalWrapper>
   )
 }
 ```
+
+**Note:** Some PDS components require `GlobalWrapper` for context. Add `'use client'` at the top of files using PDS components.
 
 ### Using Shared Data
 
 We provide mock data for common scenarios:
 
 ```typescript
-import { users, sites } from '@/shared-data'
+import { users, sites, getActiveSites } from '@/shared-data'
 
 export default function MyPrototype() {
+  const activeSites = getActiveSites()
+
   return (
     <div>
-      {sites.map(site => (
+      {activeSites.map(site => (
         <div key={site.id}>
-          {site.name} - {site.siteType}
+          {site.name} - {site.upstream} - {site.plan}
         </div>
       ))}
     </div>
@@ -125,10 +133,11 @@ See `/shared-data/README.md` for details.
 
 This project has the PDS MCP server configured. You can ask Claude to:
 
-- "Add a table showing all sites"
+- "Add a table showing all active sites"
 - "Create a card layout with user information"
-- "Style this button using PDS design tokens"
-- "Import the StatusBadge component"
+- "Style this heading using PDS design tokens"
+- "Add an IndicatorBadge to show site status"
+- "Wrap this page in GlobalWrapper and Container"
 
 ## Git Workflow
 
@@ -236,14 +245,23 @@ npm run aggregate
 
 ### PDS Components Not Working
 
-Make sure you're using them in a Client Component:
+Make sure you're using them in a Client Component with GlobalWrapper:
 
 ```typescript
 'use client'
 
-import { Button } from '@pantheon-systems/pds-toolkit-react'
-// ...
+import { Button, GlobalWrapper } from '@pantheon-systems/pds-toolkit-react'
+
+export default function MyPage() {
+  return (
+    <GlobalWrapper>
+      <Button>Click Me</Button>
+    </GlobalWrapper>
+  )
+}
 ```
+
+Some components (Navbar, Modal, Popover) require GlobalWrapper for context.
 
 ## Support
 
@@ -265,4 +283,4 @@ This is an internal tool for designers. If you have suggestions for improvements
 ---
 
 **Version:** 1.0.0
-**Last Updated:** February 3, 2026
+**Last Updated:** February 4, 2026

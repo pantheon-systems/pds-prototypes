@@ -18,19 +18,27 @@ Mock user data for testing user lists, profiles, and authentication flows.
 - `joinDate` - Account creation date
 
 ### Sites
-Mock site data for testing dashboard views and site management interfaces.
+Mock site data for testing dashboard views and site management interfaces. **40 total sites** with varied configurations.
 
 **Fields:**
 - `id` - Unique identifier
 - `name` - Site name
-- `siteType` - Site type (WordPress, Drupal, Next.js)
-- `status` - Current status (live, development, frozen, inactive)
-- `environment` - Deployment environment (production, staging, dev)
-- `created` - Creation date
-- `lastDeployed` - Last deployment date
-- `owner` - Owner name
-- `plan` - Pantheon plan (Basic, Performance, Elite)
-- `region` - Geographic region (US, EU, AU)
+- `created` - Creation date (formatted as "Month Day, Year")
+- `userInCharge` - Name of user managing the site
+- `upstream` - CMS/framework type (WordPress, Drupal variants, Next.js 15, Empty Upstream)
+- `plan` - Pantheon plan (Sandbox, Basic, Performance variants, Elite variants)
+- `monthlyVisitsUsed` - Current monthly visits (or "N/A")
+- `monthlyVisitsAllowed` - Monthly visit limit (or "N/A")
+- `status` - Current status (Active, Frozen)
+
+**Upstream Options:**
+- Drupal (Composer Managed)
+- WordPress
+- WordPress Multisite
+- Drupal 7, Drupal 8
+- nextjs 15
+- Empty Upstream
+- blank (empty string)
 
 ## Usage
 
@@ -45,7 +53,7 @@ export default function MyComponent() {
       <h2>Sites ({sites.length})</h2>
       {sites.map(site => (
         <div key={site.id}>
-          {site.name} - {site.siteType}
+          {site.name} - {site.upstream} - {site.plan}
         </div>
       ))}
     </div>
@@ -58,22 +66,29 @@ export default function MyComponent() {
 \`\`\`typescript
 import {
   getActiveUsers,
-  getLiveSites,
-  getSitesByType,
+  getActiveSites,
+  getFrozenSites,
+  getSitesByUser,
+  getSitesByUpstream,
+  getSitesByPlan,
   getUserById,
-  getSitesByOwner
+  getSiteById
 } from '@/shared-data'
 
 export default function Dashboard() {
   const activeUsers = getActiveUsers()
-  const liveSites = getLiveSites()
-  const wordPressSites = getSitesByType('WordPress')
+  const activeSites = getActiveSites()
+  const wordPressSites = getSitesByUpstream('WordPress')
+  const sarahsSites = getSitesByUser('Sarah Chen')
+  const performanceSites = getSitesByPlan('Performance Large')
 
   return (
     <div>
       <h2>Active Users: {activeUsers.length}</h2>
-      <h2>Live Sites: {liveSites.length}</h2>
+      <h2>Active Sites: {activeSites.length}</h2>
       <h2>WordPress Sites: {wordPressSites.length}</h2>
+      <h2>Sarah&apos;s Sites: {sarahsSites.length}</h2>
+      <h2>Performance Large Sites: {performanceSites.length}</h2>
     </div>
   )
 }
@@ -120,8 +135,11 @@ export default function SiteList() {
       {selectedSite && (
         <div>
           <h3>{selectedSite.name}</h3>
-          <p>Type: {selectedSite.siteType}</p>
+          <p>Upstream: {selectedSite.upstream}</p>
           <p>Plan: {selectedSite.plan}</p>
+          <p>User: {selectedSite.userInCharge}</p>
+          <p>Status: {selectedSite.status}</p>
+          <p>Traffic: {selectedSite.monthlyVisitsUsed} / {selectedSite.monthlyVisitsAllowed}</p>
         </div>
       )}
     </div>
@@ -147,7 +165,8 @@ import customData from './data/my-custom-data.json'
 
 - Use this data as a starting point - feel free to modify it for your needs
 - Avatar URLs use https://i.pravatar.cc for placeholder images
-- Dates are in ISO format (YYYY-MM-DD)
 - All data is typed for TypeScript autocomplete support
 - Helper functions make it easy to filter and find specific data
-- Site types match Pantheon's supported CMS platforms: WordPress, Drupal, and Next.js
+- Site upstreams match Pantheon's supported platforms: WordPress, Drupal variants, Next.js, and more
+- The 40 sites represent a diverse mix of plans, upstreams, and traffic levels
+- Some sites have "N/A" for traffic (Sandbox plans and Frozen sites typically don't track visits)

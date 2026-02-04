@@ -7,7 +7,7 @@ Welcome! This guide will help you create prototypes using the Pantheon Design Sy
 ### Prerequisites
 
 Make sure you have:
-- [ ] Node.js installed (version 18 or higher)
+- [ ] Node.js installed (version 22 or higher)
 - [ ] Git configured with your name and email
 - [ ] Access to this repository
 - [ ] A code editor (VS Code recommended)
@@ -125,7 +125,10 @@ The PDS Toolkit React library includes many components. Common ones:
 | `Button` | Buttons and actions | `<Button>Click me</Button>` |
 | `Card` | Content containers | `<Card>Content</Card>` |
 | `Table` | Data tables | `<Table headers={...} rowData={...} />` |
-| `StatusBadge` | Status indicators | `<StatusBadge label="Live" />` |
+| `IndicatorBadge` | Status indicators | `<IndicatorBadge label="Active" color="success" />` |
+| `Container` | Layout container | `<Container>...</Container>` |
+| `GlobalWrapper` | Context provider | `<GlobalWrapper>...</GlobalWrapper>` |
+| `Navbar` | Navigation bar | `<Navbar logoDisplayType="sub-brand" />` |
 | `Modal` | Dialogs | `<Modal>...</Modal>` |
 | `TextInput` | Form inputs | `<TextInput label="Name" />` |
 
@@ -148,6 +151,31 @@ import { Button } from '@pantheon-systems/pds-toolkit-react'
 // ... rest of your code
 ```
 
+### Using GlobalWrapper
+
+Some PDS components (like Navbar, Modal, Popover) require **GlobalWrapper** to provide necessary context:
+
+```typescript
+'use client'
+
+import { GlobalWrapper, Navbar, Container } from '@pantheon-systems/pds-toolkit-react'
+
+export default function MyPage() {
+  return (
+    <GlobalWrapper>
+      <Navbar logoDisplayType="sub-brand" logoSubBrand="My App" />
+      <Container>
+        <h1>My Content</h1>
+      </Container>
+    </GlobalWrapper>
+  )
+}
+```
+
+**When to use GlobalWrapper:**
+- When using Navbar, Modal, Popover, or other overlay components
+- Generally at the top level of your page component
+
 ## Working with Shared Data
 
 We provide mock data so you don't have to create it from scratch.
@@ -155,7 +183,7 @@ We provide mock data so you don't have to create it from scratch.
 ### Available Data
 
 **Users:** 5 mock users with names, emails, roles, avatars
-**Sites:** 8 mock sites (WordPress, Drupal, Next.js)
+**Sites:** 40 mock sites (WordPress, Drupal variants, Next.js, etc.)
 
 ### Importing Data
 
@@ -178,9 +206,11 @@ export default function MyComponent() {
 ```typescript
 import {
   getActiveUsers,        // Filter to active users
-  getLiveSites,          // Filter to live sites
-  getSitesByType,        // Filter by WordPress/Drupal/Next.js
-  getSitesByOwner        // Filter by owner name
+  getActiveSites,        // Filter to active sites
+  getFrozenSites,        // Filter to frozen sites
+  getSitesByUser,        // Filter by user in charge
+  getSitesByUpstream,    // Filter by upstream (WordPress, Drupal, etc.)
+  getSitesByPlan         // Filter by plan (Performance, Elite, etc.)
 } from '@/shared-data'
 ```
 
@@ -239,20 +269,26 @@ Typography: `xs`, `s`, `m`, `l`, `xl`, `2xl`, `3xl`, `4xl`
 ```typescript
 'use client'
 
-import { Table } from '@pantheon-systems/pds-toolkit-react'
+import { Table, IndicatorBadge } from '@pantheon-systems/pds-toolkit-react'
 import { sites } from '@/shared-data'
 
 export default function SiteList() {
   const headers = [
     { title: 'Name' },
-    { title: 'Type' },
+    { title: 'Upstream' },
+    { title: 'Plan' },
     { title: 'Status' }
   ]
 
   const rowData = sites.map(site => [
     site.name,
-    site.siteType,
-    site.status
+    site.upstream,
+    site.plan,
+    <IndicatorBadge
+      key={site.id}
+      label={site.status}
+      color={site.status === 'Active' ? 'success' : 'neutral'}
+    />
   ])
 
   return <Table headers={headers} rowData={rowData} />
@@ -333,9 +369,15 @@ Edit your project's `metadata.json`:
 
 ```json
 {
-  "status": "review"  // Change from "in-progress" to "review"
+  "status": "review"  // Options: "in-progress", "review", "ready", "archived"
 }
 ```
+
+**Status Options:**
+- `in-progress` - Actively working on it
+- `review` - Ready for feedback
+- `ready` - Ready for handoff
+- `archived` - No longer active
 
 Restart the dev server to see changes on the homepage.
 
