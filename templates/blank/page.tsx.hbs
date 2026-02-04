@@ -1,12 +1,23 @@
-import styles from './page.module.css' export default function
-{{pascalCase name}}() { return (
-<div className='{styles.container}'>
-	<h1>{{title}}</h1>
-	<p>Start building your prototype here.</p>
+'use client'
 
-	{/* Tips: - Import PDS components: import { Button, Card } from
-	'@pantheon-systems/pds-toolkit-react' - Use shared data: import { users, sites
-	} from '@/shared-data' - Add your own components in a 'components' folder -
-	Create mock data in a 'data' folder */}
-</div>
-) }
+import { GlobalWrapper } from '@pantheon-systems/pds-toolkit-react'
+import styles from './page.module.css'
+
+export default function {{pascalCase name}}() {
+	return (
+		<GlobalWrapper>
+			<div className={styles.container}>
+				<h1>{{title}}</h1>
+				<p>Start building your prototype here.</p>
+
+				{/*
+					Tips:
+					- Import PDS components: import { Button, Card } from '@pantheon-systems/pds-toolkit-react'
+					- Use shared data: import { users, sites } from '@/shared-data'
+					- Add your own components in a 'components' folder
+					- Create mock data in a 'data' folder
+				*/}
+			</div>
+		</GlobalWrapper>
+	)
+}
