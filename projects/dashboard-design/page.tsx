@@ -136,7 +136,7 @@ const userMenuItems = [
   },
 ]
 
-export default function {{pascalCase name}}() {
+export default function DashboardDesign() {
   return (
     <GlobalWrapper>
       <DashboardGlobal

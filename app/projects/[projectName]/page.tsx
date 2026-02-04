@@ -1,9 +1,9 @@
 import { notFound } from 'next/navigation'
-import Link from 'next/link'
 import { promises as fs } from 'fs'
 import path from 'path'
 import dynamic from 'next/dynamic'
 import { ProjectMetadata } from '@/types/project'
+import ProjectHeader from './ProjectHeader'
 import styles from './page.module.css'
 
 // Generate static paths for all projects
@@ -84,27 +84,8 @@ export default async function ProjectPage({
 
   return (
     <div className={styles.projectPage}>
-      {/* Back navigation */}
-      <nav className={styles.nav}>
-        <Link href="/" className={styles.backLink}>
-          ← Back to Projects
-        </Link>
-      </nav>
-
-      {/* Project header */}
-      <header className={styles.header}>
-        <h1 className={styles.title}>{metadata.title}</h1>
-        <div className={styles.meta}>
-          <span className={styles.creator}>By {metadata.creator}</span>
-          <span className={styles.separator}>•</span>
-          <span className={styles.status}>{metadata.status}</span>
-          <span className={styles.separator}>•</span>
-          <span className={styles.template}>{metadata.template} template</span>
-        </div>
-        {metadata.description && (
-          <p className={styles.description}>{metadata.description}</p>
-        )}
-      </header>
+      {/* Project header with navigation and metadata */}
+      <ProjectHeader metadata={metadata} template={metadata.template} />
 
       {/* Project content */}
       <main className={styles.content}>

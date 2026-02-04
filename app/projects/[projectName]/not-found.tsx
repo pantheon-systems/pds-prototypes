@@ -1,4 +1,7 @@
+'use client'
+
 import Link from 'next/link'
+import { ButtonLink } from '@pantheon-systems/pds-toolkit-react'
 
 export default function NotFound() {
   return (
@@ -12,16 +15,12 @@ export default function NotFound() {
       <p style={{ marginBottom: '2rem', color: '#666' }}>
         The project you&apos;re looking for doesn&apos;t exist or has been deleted.
       </p>
-      <Link
-        href="/"
-        style={{
-          color: '#4f32ce',
-          textDecoration: 'none',
-          fontWeight: 500
-        }}
-      >
-        ← Back to Projects
-      </Link>
+      <ButtonLink
+        variant="subtle"
+        displayType="icon-start"
+        iconName="angleLeft"
+        linkContent={<Link href="/">Back to Projects</Link>}
+      />
     </div>
   )
 }

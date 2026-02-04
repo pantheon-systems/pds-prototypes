@@ -5,73 +5,101 @@
   background: var(--pds-color-bg-default);
 }
 
-.nav {
-  padding: var(--pds-spacing-m) var(--pds-spacing-xl);
-  border-bottom: 1px solid var(--pds-color-border-default);
-  background: var(--pds-color-bg-default);
+/* Header Wrapper - Contains both header and toggle */
+.headerWrapper {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: transparent;
 }
 
-.backLink {
-  color: var(--pds-color-brand-primary-400);
-  text-decoration: none;
-  font-size: var(--pds-typography-size-s);
-  font-weight: var(--pds-typography-fw-medium);
-  transition: color 0.2s;
+/* Project Header - Compact single bar with nav and metadata */
+.projectHeader {
+  display: flex;
+  align-items: center;
+  gap: var(--pds-spacing-m);
+  padding: var(--pds-spacing-xs) var(--pds-spacing-xl);
+  padding-right: calc(var(--pds-spacing-xl) + 48px); /* Make room for toggle button */
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.12);
+  transition: all 0.3s ease;
+  max-height: 100px;
+  opacity: 1;
 }
 
-.backLink:hover {
-  color: var(--pds-color-brand-primary-500);
-  text-decoration: underline;
-}
-
-.header {
-  padding: var(--pds-spacing-xl);
-  border-bottom: 1px solid var(--pds-color-border-default);
+/* Default/Blank template - uses secondary background */
+.projectHeaderDefault {
   background: var(--pds-color-bg-default-secondary);
 }
 
-.title {
-  font-size: var(--pds-typography-size-2xl);
-  font-weight: var(--pds-typography-fw-bold);
-  color: var(--pds-color-fg-default);
-  margin-bottom: var(--pds-spacing-2xs);
-  line-height: var(--pds-typography-lh-s);
+/* Dashboard template - uses default background */
+.projectHeaderDashboard {
+  background: var(--pds-color-bg-default);
 }
 
-.meta {
+.projectHeaderHidden {
+  max-height: 0;
+  opacity: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+  overflow: hidden;
+  box-shadow: none;
+}
+
+.projectHeaderLeft {
+  flex-shrink: 0;
+}
+
+.projectHeaderRight {
   display: flex;
   align-items: center;
-  gap: var(--pds-spacing-2xs);
-  margin-bottom: var(--pds-spacing-xs);
+  gap: var(--pds-spacing-xs);
   font-size: var(--pds-typography-size-s);
+  color: var(--pds-color-fg-default-secondary);
+  margin-left: auto;
+  padding-right: var(--pds-spacing-m);
+}
+
+.projectHeaderToggle {
+  position: fixed;
+  top: var(--pds-spacing-xs);
+  right: var(--pds-spacing-xl);
+  z-index: 11;
+}
+
+.toggleHidden {
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.toggleHidden:hover,
+.toggleHidden:focus-within,
+.toggleHidden:has(:focus),
+.toggleHidden:has(:focus-visible) {
+  opacity: 1;
+}
+
+.projectTitle {
+  font-size: var(--pds-typography-size-s);
+  font-weight: var(--pds-typography-fw-medium);
+  color: var(--pds-color-fg-default);
+}
+
+.projectCreator {
   color: var(--pds-color-fg-default-secondary);
 }
 
-.creator {
-  font-weight: var(--pds-typography-fw-medium);
-}
-
-.separator {
+.metaSeparator {
   opacity: 0.5;
 }
 
-.status {
+.projectTemplate {
   text-transform: capitalize;
-}
-
-.template {
-  text-transform: capitalize;
-}
-
-.description {
-  font-size: var(--pds-typography-size-m);
   color: var(--pds-color-fg-default-secondary);
-  line-height: var(--pds-typography-lh-m);
-  max-width: 800px;
 }
 
 .content {
-  padding: var(--pds-spacing-xl);
+  /* No default padding - projects can add their own if needed */
+  /* DashboardGlobal and other PDS layouts provide their own spacing */
 }
 
 /* Empty State */
@@ -108,17 +136,21 @@
 
 /* Responsive */
 @media (max-width: 768px) {
-  .nav,
-  .header,
+  .projectHeader {
+    padding: var(--pds-spacing-xs) var(--pds-spacing-m);
+    padding-right: calc(var(--pds-spacing-m) + 48px); /* Make room for toggle button */
+  }
+
+  .projectHeaderToggle {
+    right: var(--pds-spacing-m);
+    top: var(--pds-spacing-xs);
+  }
+
+  .projectHeaderRight {
+    flex-wrap: wrap;
+  }
+
   .content {
     padding: var(--pds-spacing-m);
-  }
-
-  .title {
-    font-size: var(--pds-typography-size-xl);
-  }
-
-  .meta {
-    flex-wrap: wrap;
   }
 }
