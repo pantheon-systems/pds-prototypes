@@ -2,7 +2,7 @@
 
 import Link from 'next/link'
 import { useEffect, useState } from 'react'
-import { Table, IndicatorBadge, ButtonLink, EmptyStateCard } from '@pantheon-systems/pds-toolkit-react'
+import { Table, IndicatorBadge, ButtonLink, EmptyStateCard, Container, Navbar, GlobalWrapper } from '@pantheon-systems/pds-toolkit-react'
 import { ProjectMetadata, STATUS_CONFIG } from '@/types/project'
 import styles from './page.module.css'
 
@@ -72,46 +72,57 @@ export default function HomePage() {
 
   if (loading) {
     return (
-      <main className={styles.container}>
-        <p>Loading projects...</p>
-      </main>
+      <GlobalWrapper>
+        <Navbar
+          logoDisplayType="sub-brand"
+          logoSubBrand="PDS Prototypes"
+          containerWidth="x-wide"
+        />
+        <main>
+          <Container className='pds-mar-block-3xl' width="x-wide">
+            <p>Loading projects...</p>
+          </Container>
+        </main>
+      </GlobalWrapper>
     )
   }
 
   return (
-    <main className={styles.container}>
-      <header className={styles.header}>
-        <h1 className={styles.title}>PDS Prototypes</h1>
-        <p className={styles.subtitle}>
-          Designer prototyping playground using Pantheon Design System
-        </p>
-      </header>
+    <GlobalWrapper>
+      <Navbar
+        logoDisplayType="sub-brand"
+        logoSubBrand="PDS Prototypes"
+        containerWidth="x-wide"
+      />
+      <main>
+        <Container className='pds-mar-block-3xl' width="x-wide">
+          {projects.length === 0 ? (
+            <EmptyStateCard
+              headingText="No projects yet"
+              summary="Create your first project to get started with prototyping. Run the command below in your terminal."
+              linkContent={
+                <div className={styles.emptyStateCta}>
+                  <code className={styles.code}>npm run new</code>
+                </div>
+              }
+            />
+          ) : (
+            <div className={styles.projectsSection}>
+              <div className={styles.projectsHeader}>
+                <h1 className='pds-ts-2xl pds-mar-block-end-xl'>All Projects</h1>
+              </div>
 
-      {projects.length === 0 ? (
-        <EmptyStateCard
-          headingText="No projects yet"
-          summary="Create your first project to get started with prototyping. Run the command below in your terminal."
-          linkContent={
-            <div className={styles.emptyStateCta}>
-              <code className={styles.code}>npm run new</code>
+              <Table headers={headers} rowData={rowData} />
             </div>
-          }
-        />
-      ) : (
-        <div className={styles.projectsSection}>
-          <div className={styles.projectsHeader}>
-            <h2>All Projects ({projects.length})</h2>
-          </div>
+          )}
 
-          <Table headers={headers} rowData={rowData} />
-        </div>
-      )}
-
-      <footer className={styles.footer}>
-        <p>
-          To create a new project, run <code>npm run new</code> in your terminal
-        </p>
-      </footer>
-    </main>
+          <footer className={styles.footer}>
+            <p>
+              To create a new project, run <code>npm run new</code> in your terminal
+            </p>
+          </footer>
+        </Container>
+      </main>
+    </GlobalWrapper>
   )
 }

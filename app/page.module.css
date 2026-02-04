@@ -1,40 +1,9 @@
 /* Using actual PDS Design Tokens */
-.container {
-  min-height: 100vh;
-  padding: var(--pds-spacing-xl);
-  max-width: 1400px;
-  margin: 0 auto;
-}
-
-.header {
-  margin-bottom: var(--pds-spacing-2xl);
-  border-bottom: 2px solid var(--pds-color-border-default);
-  padding-bottom: var(--pds-spacing-xl);
-}
-
-.title {
-  font-size: var(--pds-typography-size-3xl);
-  font-weight: var(--pds-typography-fw-bold);
-  margin-bottom: var(--pds-spacing-2xs);
-  color: var(--pds-color-fg-default);
-  line-height: var(--pds-typography-lh-s);
-}
-
-.subtitle {
-  font-size: var(--pds-typography-size-l);
-  color: var(--pds-color-fg-default-secondary);
-  line-height: var(--pds-typography-lh-m);
-}
 
 /* Empty State */
 .emptyStateCta {
   text-align: center;
   margin-top: var(--pds-spacing-m);
-}
-
-.emptyStateCta p {
-  color: var(--pds-color-fg-default-secondary);
-  margin-bottom: var(--pds-spacing-2xs);
 }
 
 .code {
@@ -54,12 +23,6 @@
 
 .projectsHeader {
   margin-bottom: var(--pds-spacing-m);
-}
-
-.projectsHeader h2 {
-  font-size: var(--pds-typography-size-xl);
-  color: var(--pds-color-fg-default);
-  font-weight: var(--pds-typography-fw-semibold);
 }
 
 .descriptionCell {
@@ -82,7 +45,6 @@
 .footer {
   margin-top: var(--pds-spacing-2xl);
   padding-top: var(--pds-spacing-xl);
-  border-top: 1px solid var(--pds-color-border-default);
   text-align: center;
   color: var(--pds-color-fg-default-secondary);
   font-size: var(--pds-typography-size-s);
@@ -94,15 +56,4 @@
   border-radius: var(--pds-border-radius-default);
   font-family: var(--pds-typography-ff-mono);
   color: var(--pds-color-fg-default);
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-  .container {
-    padding: var(--pds-spacing-m);
-  }
-
-  .title {
-    font-size: var(--pds-typography-size-2xl);
-  }
 }
