@@ -6,13 +6,12 @@ import Link from 'next/link';
 import { ProjectMetadata, STATUS_CONFIG } from '@/types/project';
 import {
 	ButtonLink,
-	Container,
 	EmptyStateCard,
-	GlobalWrapper,
 	IndicatorBadge,
-	Navbar,
 	Table,
 } from '@pantheon-systems/pds-toolkit-react';
+
+import { PageLayout } from './components';
 
 import styles from './page.module.css';
 
@@ -83,42 +82,34 @@ export default function HomePage() {
 	]);
 
 	return (
-		<GlobalWrapper>
-			<Navbar
-				containerWidth='x-wide'
-				logoDisplayType='sub-brand'
-				logoSubBrand='PDS Prototypes'
-			/>
-			<Container className='pds-mar-block-3xl' width='x-wide'>
-				{loading ? (
-					<p>Loading projects...</p>
-				) : projects.length === 0 ? (
-					<EmptyStateCard
-						headingText='No projects yet'
-						linkContent={
-							<div className={styles.emptyStateCta}>
-								<code className={styles.code}>npm run new</code>
-							</div>
-						}
-						summary='Create your first project to get started with prototyping. Run the command below in your terminal.'
-					/>
-				) : (
-					<div className={styles.projectsSection}>
-						<div className={styles.projectsHeader}>
-							<h1 className='pds-ts-2xl pds-mar-block-end-xl'>All Projects</h1>
+		<PageLayout>
+			{loading ? (
+				<p>Loading projects...</p>
+			) : projects.length === 0 ? (
+				<EmptyStateCard
+					headingText='No projects yet'
+					linkContent={
+						<div className={styles.emptyStateCta}>
+							<code className={styles.code}>npm run new</code>
 						</div>
-
-						<Table headers={headers} rowData={rowData} />
+					}
+					summary='Create your first project to get started with prototyping. Run the command below in your terminal.'
+				/>
+			) : (
+				<div className={styles.projectsSection}>
+					<div className={styles.projectsHeader}>
+						<h1 className='pds-ts-3xl pds-mar-block-end-xl'>All Projects</h1>
 					</div>
-				)}
 
-				<footer className={styles.footer}>
-					<p>
-						To create a new project, run <code>npm run new</code> in your
-						terminal
-					</p>
-				</footer>
-			</Container>
-		</GlobalWrapper>
+					<Table headers={headers} rowData={rowData} />
+				</div>
+			)}
+
+			<footer className={styles.footer}>
+				<p>
+					To create a new project, run <code>npm run new</code> in your terminal
+				</p>
+			</footer>
+		</PageLayout>
 	);
 }

@@ -1,0 +1,32 @@
+.header {
+	margin-block-end: var(--pds-spacing-2xl);
+}
+
+.docGrid {
+	display: grid;
+	gap: var(--pds-spacing-l);
+	grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+	margin-block-end: var(--pds-spacing-3xl);
+}
+
+.docCard {
+	align-items: flex-start;
+	display: flex;
+	flex-direction: column;
+	gap: var(--pds-spacing-m);
+	height: 100%;
+}
+
+.cardActions {
+	align-self: stretch;
+	margin-block-start: auto;
+	width: 100%;
+}
+
+.footer {
+	border-block-start: var(--pds-border-width-default) solid
+		var(--pds-color-border-default);
+	color: var(--pds-color-fg-subtle);
+	font-size: var(--pds-typography-size-s);
+	padding-block-start: var(--pds-spacing-xl);
+}

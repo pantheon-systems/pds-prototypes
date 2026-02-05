@@ -1,0 +1,88 @@
+.resource {
+	font-family: var(--pds-typography-ff-sans);
+}
+
+.header {
+	border-block-end: var(--pds-border-width-default) solid
+		var(--pds-color-border-default);
+	margin-block-end: var(--pds-spacing-2xl);
+	padding-block-end: var(--pds-spacing-xl);
+}
+
+.section {
+	margin-block-end: var(--pds-spacing-3xl);
+}
+
+.list {
+	line-height: 1.6;
+	margin-block-start: var(--pds-spacing-m);
+	padding-inline-start: var(--pds-spacing-xl);
+}
+
+.list li {
+	margin-block-end: var(--pds-spacing-s);
+}
+
+.codeBlock {
+	background: var(--pds-color-bg-subtle);
+	border: var(--pds-border-width-default) solid var(--pds-color-border-default);
+	border-radius: var(--pds-border-radius-default);
+	font-family: var(--pds-typography-ff-mono);
+	font-size: var(--pds-typography-size-s);
+	line-height: 1.5;
+	margin-block: var(--pds-spacing-m);
+	overflow-x: auto;
+	padding: var(--pds-spacing-l);
+}
+
+.codeBlock code {
+	display: block;
+	white-space: pre;
+}
+
+.inlineCode {
+	background: var(--pds-color-bg-subtle);
+	border-radius: var(--pds-border-radius-s);
+	font-family: var(--pds-typography-ff-mono);
+	font-size: 0.9em;
+	padding: 0.125rem 0.375rem;
+}
+
+.promptBlock {
+	background: var(--pds-color-bg-info-subtle);
+	border: var(--pds-border-width-default) solid var(--pds-color-border-info);
+	border-inline-start-width: 4px;
+	border-radius: var(--pds-border-radius-default);
+	font-family: var(--pds-typography-ff-mono);
+	font-size: var(--pds-typography-size-s);
+	line-height: 1.5;
+	margin-block: var(--pds-spacing-m);
+	overflow-x: auto;
+	padding: var(--pds-spacing-l);
+}
+
+.promptBlock code {
+	color: var(--pds-color-fg-default);
+	display: block;
+	white-space: pre-wrap;
+}
+
+.promptExample {
+	margin-block-end: var(--pds-spacing-xl);
+}
+
+.footer {
+	border-block-start: var(--pds-border-width-default) solid
+		var(--pds-color-border-default);
+	margin-block-start: var(--pds-spacing-3xl);
+	padding-block-start: var(--pds-spacing-xl);
+}
+
+.footer a {
+	color: var(--pds-color-fg-link);
+	text-decoration: none;
+}
+
+.footer a:hover {
+	text-decoration: underline;
+}
