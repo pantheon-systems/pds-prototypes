@@ -33,8 +33,8 @@ export default function DashboardResourcePage() {
 					</p>
 					<ul className={styles.list}>
 						<li>
-							Reference code showing PDS AppLayout structure with sidebar
-							navigation
+							Reference code showing PDS DashboardGlobal structure with sidebar
+							navigation, workspace selector, and top navbar
 						</li>
 						<li>Example patterns for using PDS components in dashboards</li>
 						<li>Template prompts to help you start designing</li>
@@ -74,73 +74,229 @@ export default function DashboardResourcePage() {
 					<CodeBlock
 						hasCopyButton
 						hasLineNumbers
-						code={`'use client';
-
-import Link from 'next/link';
+						code={`'use client'
 
 import {
-  AppLayout,
-  AppNav,
-  Container,
   GlobalWrapper,
+  DashboardGlobal,
+  DashboardInner,
+  DashboardNav,
   Navbar,
-} from '@pantheon-systems/pds-toolkit-react';
+  WorkspaceSelector,
+  DashboardSearch,
+  MenuButton,
+  UserMenu,
+  SiteFooter,
+} from '@pantheon-systems/pds-toolkit-react'
+import styles from './page.module.css'
 
-import styles from './page.module.css';
-
-// Navigation items for sidebar
-const navItems = [
+// Sample navigation data
+const dashboardNavItems = [
   {
-    icon: 'gauge' as const,
-    linkContent: <Link href='/'>Dashboard</Link>,
-    isActive: true,
+    icon: 'house' as const,
+    linkContent: <a href='#'>Home</a>,
   },
   {
-    icon: 'folder' as const,
-    linkContent: <Link href='/sites'>Sites</Link>,
+    icon: 'laptopCode' as const,
+    linkContent: 'Sites',
+    links: [
+      {
+        linkContent: <a href='#'>Site list</a>,
+      },
+      {
+        linkContent: <a href='#'>Create new site</a>,
+      },
+      {
+        linkContent: <a href='#'>Migrate existing site</a>,
+      },
+    ],
   },
   {
     icon: 'users' as const,
-    linkContent: <Link href='/team'>Team</Link>,
+    linkContent: <a href='#'>Team</a>,
+    isActive: true,
+  },
+  {
+    icon: 'robot' as const,
+    linkContent: <a href='#'>Autopilot</a>,
+  },
+  {
+    icon: 'chartNetwork' as const,
+    linkContent: <a href='#'>Edge</a>,
+  },
+  {
+    icon: 'lifeRing' as const,
+    linkContent: <a href='#'>Support</a>,
   },
   {
     icon: 'gear' as const,
-    linkContent: <Link href='/settings'>Settings</Link>,
+    linkContent: 'Settings',
+    links: [
+      {
+        linkContent: <a href='#'>Subscriptions</a>,
+      },
+      {
+        linkContent: <a href='#'>Invoices</a>,
+      },
+      {
+        linkContent: <a href='#'>Payment methods</a>,
+      },
+    ],
   },
-];
+]
+
+const workspaces = [
+  {
+    displayName: 'Acme Corporation',
+    workspaceId: 'acme-corp',
+    workspaceLink: <a href='#' />,
+    isActive: true,
+  },
+  {
+    displayName: 'Tech Startup Inc',
+    workspaceId: 'tech-startup',
+    workspaceLink: <a href='#' />,
+  },
+  {
+    displayName: 'Design Agency',
+    workspaceId: 'design-agency',
+    workspaceLink: <a href='#' />,
+  },
+]
+
+const sampleSites = [
+  {
+    id: 'marketing-site',
+    name: 'Marketing Site',
+    url: 'https://marketing.example.com',
+  },
+  {
+    id: 'blog',
+    name: 'Blog',
+    url: 'https://blog.example.com',
+  },
+  {
+    id: 'ecommerce',
+    name: 'E-commerce Store',
+    url: 'https://store.example.com',
+  },
+]
+
+const helpMenuItems = [
+  {
+    isLink: true,
+    linkContent: <a href='https://docs.pantheon.io'>Documentation</a>,
+  },
+  {
+    isLink: true,
+    linkContent: <a href='https://pantheon.io/support'>Support</a>,
+  },
+  {
+    isLink: true,
+    linkContent: <a href='https://status.pantheon.io'>Status</a>,
+  },
+]
+
+const userMenuItems = [
+  {
+    isLink: true,
+    linkContent: <a href='#'>Profile</a>,
+  },
+  {
+    isLink: true,
+    linkContent: <a href='#'>Settings</a>,
+  },
+  {
+    isLink: true,
+    linkContent: <a href='#'>Sign out</a>,
+  },
+]
 
 export default function DashboardPage() {
   return (
     <GlobalWrapper>
-      <Navbar
-        containerWidth='full'
-        logoDisplayType='sub-brand'
-        logoSubBrand='Your App Name'
-      />
-      <AppLayout>
+      <DashboardGlobal
+        sidebarToggleLabel='Toggle sidebar'
+        skiplinkText='Skip to content'
+      >
         {/* Sidebar Navigation */}
-        <AppNav
-          ariaLabel='Main Navigation'
-          menuItems={navItems}
+        <DashboardNav
           slot='sidebar'
+          ariaLabel='Dashboard Navigation'
+          menuItems={dashboardNavItems}
         />
 
-        {/* Main Content Area */}
-        <Container
-          className='pds-mar-block-3xl'
-          slot='main'
-          width='x-wide'
+        {/* Top Navbar */}
+        <Navbar
+          slot='header'
+          hideBorder
+          hideLogo
+          colorType='transparent'
+          containerWidth='full'
         >
-          <h1 className='pds-ts-2xl pds-mar-block-end-xl'>
-            Dashboard
-          </h1>
+          <WorkspaceSelector
+            slot='items-left'
+            workspaceList={workspaces}
+            createWorkspaceLink={<a href='#'>Create workspace</a>}
+          />
+          <DashboardSearch
+            slot='items-right'
+            id='dashboard-search'
+            label='Search sites'
+            placeholder='Search sites'
+            siteList={sampleSites}
+          />
+          <MenuButton
+            slot='items-right'
+            id='help-menu-button'
+            label='Help'
+            menuItems={helpMenuItems}
+            variant='navbar'
+          />
+          <UserMenu
+            slot='items-right'
+            ariaLabel='User menu'
+            menuItems={userMenuItems}
+            userEmail='designer@example.com'
+            userName='Designer Name'
+            userImageSrc='https://i.pravatar.cc/150?img=1'
+          />
+        </Navbar>
 
-          {/* Add your prototype content here */}
-          <p>Start building your dashboard prototype here.</p>
-        </Container>
-      </AppLayout>
+        {/* Main Content Area */}
+        <DashboardInner slot='main'>
+          <div slot='content' className={styles.mainContent}>
+            {/*
+              🎨 DESIGNER WORKSPACE - START BUILDING HERE!
+
+              This is where you add your prototype content.
+
+              Tips:
+              - Import more PDS components as needed
+              - Use shared data: import { users, sites } from '@/shared-data'
+              - Add your own components in a /components folder
+              - This entire dashboard chrome will stay consistent
+            */}
+            <h1>Start building your dashboard here</h1>
+            <p>Replace this placeholder with your prototype content.</p>
+          </div>
+        </DashboardInner>
+
+        {/* Footer */}
+        <SiteFooter
+          slot='footer'
+          containerWidth='full'
+          legalLinks={[
+            'privacy',
+            'cookiePolicy',
+            'termsOfUse',
+            'acceptableUse',
+            'accessibilityStatement',
+          ]}
+        />
+      </DashboardGlobal>
     </GlobalWrapper>
-  );
+  )
 }`}
 						language='tsx'
 					/>
@@ -151,22 +307,12 @@ export default function DashboardPage() {
 					<CodeBlock
 						hasCopyButton
 						hasLineNumbers
-						code={`/* Add your custom styles here using PDS design tokens */
+						code={`/* Dashboard Design - Using PDS DashboardGlobal Layout */
 
-.container {
-  padding: var(--pds-spacing-xl);
-}
-
-/* Example: Card grid layout */
-.cardGrid {
-  display: grid;
-  gap: var(--pds-spacing-l);
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-}
-
-/* Example: Section spacing */
-.section {
-  margin-block-end: var(--pds-spacing-2xl);
+/* Main content area - where designers work */
+.mainContent {
+  /* DashboardInner provides all necessary layout and spacing */
+  /* No extra padding needed - matches actual Pantheon dashboard */
 }`}
 						language='css'
 					/>
@@ -190,7 +336,7 @@ export default function DashboardPage() {
 
 Use the PDS MCP server to review available components and create a visual artifact
 showing a dashboard with:
-- AppLayout with sidebar navigation
+- DashboardGlobal layout with sidebar navigation
 - A main content area with [describe what you want to show]
 - Proper PDS styling and components
 
@@ -293,7 +439,7 @@ Display a Modal with a form including TextInput fields, a Select dropdown, and a
 						displayType='icon-start'
 						iconName='angleLeft'
 						linkContent={
-							<Link href='/desktop-resources'>Back to Desktop Resources</Link>
+							<Link href='/desktop-resources'>Back to desktop resources</Link>
 						}
 						size='sm'
 						variant='subtle'
