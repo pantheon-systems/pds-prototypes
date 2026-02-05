@@ -16,7 +16,7 @@ const resources = [
 		id: 'dashboard',
 		title: 'Dashboard Template',
 		description:
-			'Complete starter template for building dashboard prototypes with AppLayout, sidebar navigation, and PDS components. Optimized for Claude Desktop with PDS MCP server.',
+			'Dashboard template with sidebar navigation and PDS components. Optimized for Claude Desktop.',
 		path: '/desktop-resources/dashboard',
 	},
 ];
@@ -25,7 +25,7 @@ export default function ResourcesPage() {
 	return (
 		<PageLayout>
 			<PageHeader
-				description='Template starter code and guidance for creating visual mockups with Claude Desktop. Each resource provides context for the PDS MCP server to generate authentic prototypes using PDS components.'
+				description='Create visual mockups with Claude Desktop using PDS component templates.'
 				title='Claude Desktop Resources'
 			/>
 
@@ -33,11 +33,8 @@ export default function ResourcesPage() {
 				className='pds-mar-block-end-2xl'
 				message={
 					<>
-						Follow the{' '}
-						<Link href='/documentation/claude-desktop-setup'>
-							Claude Desktop Setup guide
-						</Link>{' '}
-						to install the app and configure the PDS MCP server.
+						Install Claude Desktop and configure the PDS MCP server with our{' '}
+						<Link href='/documentation/claude-desktop-setup'>setup guide</Link>.
 					</>
 				}
 				title='New to Claude Desktop?'
@@ -57,10 +54,9 @@ export default function ResourcesPage() {
 
 			<footer className={styles.footer}>
 				<p>
-					<strong>Usage:</strong> Share each resource URL directly with Claude
-					Desktop or copy the template into your conversation. The PDS MCP
-					server provides Claude with direct access to component documentation
-					for more accurate mockups.
+					<strong>Usage:</strong> Share the resource URL with Claude Desktop or
+					copy the template. The PDS MCP server gives Claude direct access to
+					component documentation.
 				</p>
 			</footer>
 		</PageLayout>

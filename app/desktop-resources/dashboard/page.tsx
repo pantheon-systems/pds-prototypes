@@ -17,7 +17,7 @@ export default function DashboardResourcePage() {
 		<PageLayout>
 			<article className={styles.resource}>
 				<PageHeader
-					description='Guidance for creating dashboard mockups with Claude Desktop using PDS components.'
+					description='Create dashboard mockups with Claude Desktop using PDS components.'
 					title='Dashboard Template'
 				/>
 
@@ -28,9 +28,8 @@ export default function DashboardResourcePage() {
 						What This Resource Provides
 					</h2>
 					<p className='pds-mar-block-end-m'>
-						This resource gives Claude Desktop the context it needs to create
-						visual dashboard mockups using authentic PDS components. You&apos;ll
-						be able to iterate on design prototypes without writing any code.
+						Use this resource to create visual dashboard mockups with authentic
+						PDS components. Iterate on designs without writing code.
 					</p>
 					<ul className={styles.list}>
 						<li>
@@ -48,13 +47,13 @@ export default function DashboardResourcePage() {
 				<section className={styles.section}>
 					<h2 className='pds-ts-2xl pds-mar-block-end-l'>Before You Start</h2>
 					<p className='pds-mar-block-end-m'>
-						Make sure you have Claude Desktop installed and configured with the
-						PDS MCP server.
+						Install Claude Desktop and configure the PDS MCP server before using
+						this resource.
 					</p>
 					<ButtonLink
 						linkContent={
 							<Link href='/documentation/claude-desktop-setup'>
-								Follow the Claude Desktop Setup guide
+								View setup guide
 							</Link>
 						}
 						size='sm'
@@ -67,8 +66,8 @@ export default function DashboardResourcePage() {
 						Reference Template Code
 					</h2>
 					<p className='pds-mar-block-end-m'>
-						Use this code as reference context for Claude. It shows the proper
-						structure and component usage for a PDS dashboard layout.
+						Use this code as reference for Claude. It shows the proper structure
+						for a PDS dashboard layout.
 					</p>
 
 					<h3 className='pds-ts-xl pds-mar-block-end-m'>page.tsx</h3>
@@ -182,8 +181,8 @@ export default function DashboardPage() {
 						Step 1: Start a Conversation
 					</h3>
 					<p className='pds-mar-block-end-m'>
-						Open Claude Desktop and share this resource URL, or paste the
-						template code below as reference. Then use a prompt like this:
+						Share this resource URL with Claude Desktop or paste the template
+						code. Use a prompt like this:
 					</p>
 					<CodeBlock
 						hasCopyButton
@@ -268,7 +267,7 @@ Display a Modal with a form including TextInput fields, a Select dropdown, and a
 					<ul className={styles.list}>
 						<li>
 							<strong>Ask Claude to use PDS components</strong> - The MCP server
-							gives Claude access to authentic component documentation
+							provides access to component documentation
 						</li>
 						<li>
 							<strong>Be specific about interactions</strong> - Describe what

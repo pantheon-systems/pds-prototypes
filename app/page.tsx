@@ -84,7 +84,7 @@ export default function HomePage() {
 	return (
 		<PageLayout>
 			<PageHeader
-				description='Interactive prototypes built by designers using the PDS Prototypes playground. Each project is a self-contained page within this prototype environment, created with Claude Code.'
+				description='Designer prototypes created with Claude Code. Each project is a self-contained page in this playground.'
 				title='Projects'
 			/>
 
@@ -98,7 +98,7 @@ export default function HomePage() {
 							<code className={styles.code}>npm run new</code>
 						</div>
 					}
-					summary='Create your first project to get started with prototyping. Run the command below in your terminal.'
+					summary='Run the command below to create your first project.'
 				/>
 			) : (
 				<div className={styles.projectsSection}>
@@ -108,7 +108,7 @@ export default function HomePage() {
 
 			<footer className={styles.footer}>
 				<p>
-					To create a new project, run <code>npm run new</code> in your terminal
+					Run <code>npm run new</code> to create a project.
 				</p>
 			</footer>
 		</PageLayout>

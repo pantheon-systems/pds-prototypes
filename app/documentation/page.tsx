@@ -17,8 +17,7 @@ const docs = [
 	},
 	{
 		title: 'Claude Desktop Setup',
-		description:
-			'Step-by-step guide for installing Claude Desktop and configuring the PDS MCP server for visual prototyping.',
+		description: 'Install Claude Desktop and configure the PDS MCP server.',
 		path: '/documentation/claude-desktop-setup',
 		isExternal: false,
 	},
@@ -35,7 +34,7 @@ export default function DocumentationPage() {
 	return (
 		<PageLayout>
 			<PageHeader
-				description='Guides and references for working with the PDS Prototypes playground.'
+				description='Guides and references for the PDS Prototypes playground.'
 				title='Documentation'
 			/>
 

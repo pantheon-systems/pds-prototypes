@@ -13,13 +13,13 @@ export default function ClaudeDesktopSetupPage() {
 		<PageLayout>
 			<article className={styles.resource}>
 				<PageHeader
-					description='Complete setup guide for using Claude Desktop with the PDS MCP server to create visual prototypes.'
+					description='Install Claude Desktop and configure the PDS MCP server to create visual mockups.'
 					title='Claude Desktop Setup'
 				/>
 
 				<section className={styles.section}>
 					<h2 className='pds-ts-2xl pds-mar-block-end-l'>
-						What You&apos;ll Need
+						What you&apos;ll need
 					</h2>
 					<ul className={styles.list}>
 						<li>
@@ -60,11 +60,11 @@ export default function ClaudeDesktopSetupPage() {
 
 				<section className={styles.section}>
 					<h2 className='pds-ts-2xl pds-mar-block-end-l'>
-						Step 2: Configure the PDS MCP Server
+						Step 2: Configure the PDS MCP server
 					</h2>
 
 					<h3 className='pds-ts-xl pds-mar-block-end-m'>
-						Locate the Configuration File
+						Locate the configuration file
 					</h3>
 					<p className='pds-mar-block-end-m'>
 						The Claude Desktop configuration file is located at:
@@ -98,11 +98,11 @@ export default function ClaudeDesktopSetupPage() {
 					</div>
 
 					<h3 className='pds-ts-xl pds-mar-block-end-m pds-mar-block-start-xl'>
-						Edit the Configuration File
+						Edit the configuration file
 					</h3>
 					<ol className={styles.list}>
 						<li>
-							<strong>Open the file in a text editor</strong>
+							<strong>Open the file in a text editor.</strong>
 							<p className='pds-mar-block-start-xs pds-mar-block-end-s'>
 								On macOS, you can use Terminal:
 							</p>
@@ -118,7 +118,7 @@ export default function ClaudeDesktopSetupPage() {
 							</p>
 						</li>
 						<li>
-							<strong>Add the PDS MCP server configuration</strong>
+							<strong>Add the PDS MCP server configuration.</strong>
 							<p className='pds-mar-block-start-xs pds-mar-block-end-s'>
 								If the file is empty or only has empty braces{' '}
 								<code>{'{}'}</code>, replace it with:
@@ -152,16 +152,15 @@ export default function ClaudeDesktopSetupPage() {
 							</div>
 						</li>
 						<li>
-							<strong>Save the file</strong>
+							<strong>Save the file.</strong>
 						</li>
 						<li>
-							<strong>Restart Claude Desktop</strong> - Quit the app completely
-							and relaunch it
+							<strong>Quit Claude Desktop completely and relaunch it.</strong>
 						</li>
 					</ol>
 
 					<h3 className='pds-ts-xl pds-mar-block-end-m pds-mar-block-start-xl'>
-						Verify the Setup
+						Verify the setup
 					</h3>
 					<p className='pds-mar-block-end-m'>
 						To confirm the PDS MCP server is working:
@@ -181,28 +180,24 @@ export default function ClaudeDesktopSetupPage() {
 
 				<section className={styles.section}>
 					<h2 className='pds-ts-2xl pds-mar-block-end-l'>
-						Using Desktop Resources
+						Using desktop resources
 					</h2>
 					<p className='pds-mar-block-end-m'>
-						Now that you have Claude Desktop set up with the PDS MCP server, you
-						can use the <Link href='/desktop-resources'>Desktop Resources</Link>{' '}
-						to create visual prototypes:
+						Use <Link href='/desktop-resources'>Desktop Resources</Link> to
+						create visual prototypes:
 					</p>
 					<ol className={styles.list}>
 						<li>
-							Browse the{' '}
-							<Link href='/desktop-resources'>Desktop Resources section</Link>
+							Browse <Link href='/desktop-resources'>Desktop Resources</Link>
 						</li>
+						<li>Choose a template and open its page</li>
 						<li>
-							Choose a template (e.g., Dashboard Template) and open its page
-						</li>
-						<li>
-							Share the resource URL with Claude Desktop, or copy the template
+							Share the resource URL with Claude Desktop or copy the template
 							code
 						</li>
 						<li>
-							Ask Claude to create visual mockups using PDS components - the MCP
-							server will provide component documentation automatically
+							Ask Claude to create visual mockups using PDS components. The MCP
+							server provides component documentation automatically.
 						</li>
 						<li>Iterate on your design with follow-up prompts</li>
 					</ol>
@@ -212,7 +207,7 @@ export default function ClaudeDesktopSetupPage() {
 					<h2 className='pds-ts-2xl pds-mar-block-end-l'>Troubleshooting</h2>
 
 					<h3 className='pds-ts-xl pds-mar-block-end-m'>
-						MCP Server Not Working
+						MCP server not working
 					</h3>
 					<ul className={styles.list}>
 						<li>Make sure you completely quit and restarted Claude Desktop</li>
@@ -234,7 +229,7 @@ export default function ClaudeDesktopSetupPage() {
 					</ul>
 
 					<h3 className='pds-ts-xl pds-mar-block-end-m pds-mar-block-start-l'>
-						Configuration File Not Found
+						Configuration file not found
 					</h3>
 					<ul className={styles.list}>
 						<li>
@@ -260,7 +255,7 @@ export default function ClaudeDesktopSetupPage() {
 						displayType='icon-start'
 						iconName='angleLeft'
 						linkContent={
-							<Link href='/documentation'>Back to Documentation</Link>
+							<Link href='/documentation'>Back to documentation</Link>
 						}
 						size='sm'
 						variant='subtle'
