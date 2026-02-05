@@ -17,7 +17,7 @@ export default function DashboardResourcePage() {
 		<PageLayout>
 			<article className={styles.resource}>
 				<PageHeader
-					description='Reference templates and guidance for creating dashboard mockups with Claude Desktop using PDS components.'
+					description='Guidance for creating dashboard mockups with Claude Desktop using PDS components.'
 					title='Dashboard Template'
 				/>
 
@@ -294,7 +294,7 @@ Display a Modal with a form including TextInput fields, a Select dropdown, and a
 						displayType='icon-start'
 						iconName='angleLeft'
 						linkContent={
-							<Link href='/resources'>Back to Desktop Resources</Link>
+							<Link href='/desktop-resources'>Back to Desktop Resources</Link>
 						}
 						size='sm'
 						variant='subtle'

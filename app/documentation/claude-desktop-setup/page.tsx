@@ -185,13 +185,13 @@ export default function ClaudeDesktopSetupPage() {
 					</h2>
 					<p className='pds-mar-block-end-m'>
 						Now that you have Claude Desktop set up with the PDS MCP server, you
-						can use the <Link href='/resources'>Desktop Resources</Link> to
-						create visual prototypes:
+						can use the <Link href='/desktop-resources'>Desktop Resources</Link>{' '}
+						to create visual prototypes:
 					</p>
 					<ol className={styles.list}>
 						<li>
 							Browse the{' '}
-							<Link href='/resources'>Desktop Resources section</Link>
+							<Link href='/desktop-resources'>Desktop Resources section</Link>
 						</li>
 						<li>
 							Choose a template (e.g., Dashboard Template) and open its page

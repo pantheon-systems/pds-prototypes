@@ -17,7 +17,7 @@ const resources = [
 		title: 'Dashboard Template',
 		description:
 			'Complete starter template for building dashboard prototypes with AppLayout, sidebar navigation, and PDS components. Optimized for Claude Desktop with PDS MCP server.',
-		path: '/resources/dashboard',
+		path: '/desktop-resources/dashboard',
 	},
 ];
 
