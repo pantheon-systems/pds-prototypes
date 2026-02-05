@@ -25,11 +25,11 @@ export function AppNavigation({
 			isActive: pathname === '/',
 			icon: 'folderTree',
 		},
-		{
-			linkContent: <Link href='/desktop-resources'>Desktop Resources</Link>,
-			isActive: pathname?.startsWith('/desktop-resources') ?? false,
-			icon: 'sparkles',
-		},
+		// {
+		// 	linkContent: <Link href='/desktop-resources'>Desktop Resources</Link>,
+		// 	isActive: pathname?.startsWith('/desktop-resources') ?? false,
+		// 	icon: 'sparkles',
+		// },
 		{
 			linkContent: <Link href='/documentation'>Documentation</Link>,
 			isActive: pathname === '/documentation',
