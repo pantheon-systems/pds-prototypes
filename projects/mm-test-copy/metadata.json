@@ -1,0 +1,9 @@
+{
+	"id": "mm-test-copy",
+	"title": "Test Project 2",
+	"description": "A test project to verify metadata aggregation",
+	"creator": "mel-miller",
+	"createdDate": "2026-02-05",
+	"status": "in-progress",
+	"template": "blank"
+}
