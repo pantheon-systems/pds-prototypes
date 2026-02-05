@@ -397,7 +397,12 @@ To remove a project completely:
    - Right-click the project folder (e.g., `your-project-name`)
    - Select "Move to Trash" (macOS) or "Delete" (Windows)
 
-2. The homepage will automatically update when you restart the dev server
+2. Update the project list:
+
+   - **If dev server is running:** Restart it, or run `npm run aggregate` to update immediately
+   - **If dev server is not running:** The project list will update automatically next time you run `npm run dev`
+
+   The homepage project list will reflect the deletion once the metadata regenerates.
 
 ## Available Commands
 
