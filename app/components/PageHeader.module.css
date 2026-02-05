@@ -1,6 +1,6 @@
 .header {
 	border-block-end: var(--pds-border-width-default) solid
 		var(--pds-color-border-default);
-	margin-block-end: var(--pds-spacing-3xl);
+	margin-block-end: var(--pds-spacing-xl);
 	padding-block-end: var(--pds-spacing-xl);
 }

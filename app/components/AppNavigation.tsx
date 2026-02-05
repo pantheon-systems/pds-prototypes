@@ -26,7 +26,7 @@ export function AppNavigation({
 			icon: 'folderTree',
 		},
 		{
-			linkContent: <Link href='/resources'>Resources</Link>,
+			linkContent: <Link href='/resources'>Desktop Resources</Link>,
 			isActive: pathname?.startsWith('/resources') ?? false,
 			icon: 'sparkles',
 		},

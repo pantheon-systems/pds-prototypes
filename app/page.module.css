@@ -21,10 +21,6 @@
 	margin-bottom: var(--pds-spacing-xl);
 }
 
-.projectsHeader {
-	margin-bottom: var(--pds-spacing-m);
-}
-
 .descriptionCell {
 	color: var(--pds-color-fg-default-secondary);
 	max-width: 300px;

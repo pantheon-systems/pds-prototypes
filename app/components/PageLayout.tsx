@@ -58,7 +58,7 @@ export function PageLayout({ children }: PageLayoutProps) {
 					containerWidth='x-wide'
 					isSidebarCollapsed={sidebarCollapsed}
 					onSidebarToggle={handleSidebarToggle}
-					sidebarExpandedWidthMin={12.75}
+					sidebarExpandedWidthMin={14.5}
 				>
 					<AppNavigation isSidebarCollapsed={sidebarCollapsed} slot='sidebar' />
 					{children}

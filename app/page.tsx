@@ -11,7 +11,7 @@ import {
 	Table,
 } from '@pantheon-systems/pds-toolkit-react';
 
-import { PageLayout } from './components';
+import { PageHeader, PageLayout } from './components';
 
 import styles from './page.module.css';
 
@@ -83,6 +83,11 @@ export default function HomePage() {
 
 	return (
 		<PageLayout>
+			<PageHeader
+				description='Interactive prototypes built by designers using the PDS Prototypes playground. Each project is a self-contained page within this prototype environment, created with Claude Code.'
+				title='Projects'
+			/>
+
 			{loading ? (
 				<p>Loading projects...</p>
 			) : projects.length === 0 ? (
@@ -97,10 +102,6 @@ export default function HomePage() {
 				/>
 			) : (
 				<div className={styles.projectsSection}>
-					<div className={styles.projectsHeader}>
-						<h1 className='pds-ts-3xl pds-mar-block-end-xl'>All Projects</h1>
-					</div>
-
 					<Table headers={headers} rowData={rowData} />
 				</div>
 			)}

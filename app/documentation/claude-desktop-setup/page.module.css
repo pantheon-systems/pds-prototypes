@@ -2,13 +2,6 @@
 	font-family: var(--pds-typography-ff-sans);
 }
 
-.header {
-	border-block-end: var(--pds-border-width-default) solid
-		var(--pds-color-border-default);
-	margin-block-end: var(--pds-spacing-2xl);
-	padding-block-end: var(--pds-spacing-xl);
-}
-
 .section {
 	margin-block-end: var(--pds-spacing-3xl);
 }
@@ -23,8 +16,16 @@
 	margin-block-end: var(--pds-spacing-s);
 }
 
-.promptExample {
-	margin-block-end: var(--pds-spacing-xl);
+.configPaths {
+	display: flex;
+	flex-direction: column;
+	gap: var(--pds-spacing-l);
+	margin-block: var(--pds-spacing-l);
+}
+
+.configPath strong {
+	display: block;
+	margin-block-end: var(--pds-spacing-xs);
 }
 
 .footer {
@@ -32,13 +33,4 @@
 		var(--pds-color-border-default);
 	margin-block-start: var(--pds-spacing-3xl);
 	padding-block-start: var(--pds-spacing-xl);
-}
-
-.footer a {
-	color: var(--pds-color-fg-link);
-	text-decoration: none;
-}
-
-.footer a:hover {
-	text-decoration: underline;
 }

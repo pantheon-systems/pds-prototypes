@@ -1,5 +1,7 @@
 'use client';
 
+import Link from 'next/link';
+
 import { EmptyStateCard } from '@pantheon-systems/pds-toolkit-react';
 
 import { PageHeader, PageLayout } from '../components';
@@ -8,15 +10,24 @@ import styles from './page.module.css';
 
 const docs = [
 	{
+		title: 'Project README',
+		description: 'Quick start guide, setup instructions, and project overview.',
+		href: 'https://github.com/pantheon-systems/pds-prototypes/blob/main/README.md',
+		isExternal: true,
+	},
+	{
+		title: 'Claude Desktop Setup',
+		description:
+			'Step-by-step guide for installing Claude Desktop and configuring the PDS MCP server for visual prototyping.',
+		path: '/documentation/claude-desktop-setup',
+		isExternal: false,
+	},
+	{
 		title: 'PDS Toolkit React',
 		description:
 			'Official PDS component library documentation with interactive examples and API reference.',
 		href: 'https://pds-react.pantheon.io/',
-	},
-	{
-		title: 'Project README',
-		description: 'Quick start guide, setup instructions, and project overview.',
-		href: 'https://github.com/pantheon-systems/pds-prototypes/blob/main/README.md',
+		isExternal: true,
 	},
 ];
 
@@ -32,12 +43,16 @@ export default function DocumentationPage() {
 				{docs.map((doc) => (
 					<EmptyStateCard
 						key={doc.title}
-						isLinkExternal
 						headingText={doc.title}
+						isLinkExternal={doc.isExternal}
 						linkContent={
-							<a href={doc.href} rel='noopener noreferrer' target='_blank'>
-								View Documentation
-							</a>
+							doc.isExternal ? (
+								<a href={doc.href} rel='noopener noreferrer' target='_blank'>
+									View Documentation
+								</a>
+							) : (
+								<Link href={doc.path!}>View Guide</Link>
+							)
 						}
 						summary={doc.description}
 					/>

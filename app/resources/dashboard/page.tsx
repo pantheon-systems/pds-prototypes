@@ -2,6 +2,8 @@
 
 import Link from 'next/link';
 
+import { ButtonLink, CodeBlock } from '@pantheon-systems/pds-toolkit-react';
+
 import { PageHeader, PageLayout } from '../../components';
 
 import styles from './page.module.css';
@@ -11,69 +13,63 @@ export default function DashboardResourcePage() {
 		<PageLayout>
 			<article className={styles.resource}>
 				<PageHeader
-					description='Complete starter template for building dashboard prototypes with AppLayout, sidebar navigation, and PDS components.'
+					description='Reference templates and guidance for creating dashboard mockups with Claude Desktop using PDS components.'
 					title='Dashboard Template'
 				/>
 
 				<section className={styles.section}>
 					<h2 className='pds-ts-2xl pds-mar-block-end-l'>
-						What You&apos;ll Get
+						What This Resource Provides
 					</h2>
-					<ul className={styles.list}>
-						<li>Complete PDS AppLayout with sidebar and main content area</li>
-						<li>Pre-configured GlobalWrapper for PDS component context</li>
-						<li>Navbar with branding</li>
-						<li>AppNav sidebar with sample navigation items</li>
-						<li>Responsive layout ready for your prototype content</li>
-						<li>CSS Module setup with PDS design tokens</li>
-					</ul>
-				</section>
-
-				<section className={styles.section}>
-					<h2 className='pds-ts-2xl pds-mar-block-end-l'>Prerequisites</h2>
-					<ul className={styles.list}>
-						<li>
-							<strong>Claude Enterprise</strong> with access to MCP servers
-						</li>
-						<li>
-							<strong>PDS MCP Server configured</strong> - Add the
-							pds-toolkit-react MCP server to your Claude configuration
-						</li>
-						<li>
-							<strong>Next.js project</strong> (App Router with TypeScript)
-						</li>
-					</ul>
-				</section>
-
-				<section className={styles.section}>
-					<h2 className='pds-ts-2xl pds-mar-block-end-l'>Setting Up PDS MCP</h2>
 					<p className='pds-mar-block-end-m'>
-						Add the following to your Claude Enterprise MCP configuration:
+						This resource gives Claude Desktop the context it needs to create
+						visual dashboard mockups using authentic PDS components. You&apos;ll
+						be able to iterate on design prototypes without writing any code.
 					</p>
-					<pre className={styles.codeBlock}>
-						<code>
-							{`{
-  "mcpServers": {
-    "pds-toolkit-react": {
-      "command": "npx",
-      "args": [
-        "-y",
-        "@pantheon-systems/pds-toolkit-react-mcp-server@latest"
-      ]
-    }
-  }
-}`}
-						</code>
-					</pre>
+					<ul className={styles.list}>
+						<li>
+							Reference code showing PDS AppLayout structure with sidebar
+							navigation
+						</li>
+						<li>Example patterns for using PDS components in dashboards</li>
+						<li>Template prompts to help you start designing</li>
+						<li>
+							Context for Claude to understand PDS component usage and patterns
+						</li>
+					</ul>
 				</section>
 
 				<section className={styles.section}>
-					<h2 className='pds-ts-2xl pds-mar-block-end-l'>Template Code</h2>
+					<h2 className='pds-ts-2xl pds-mar-block-end-l'>Before You Start</h2>
+					<p className='pds-mar-block-end-m'>
+						Make sure you have Claude Desktop installed and configured with the
+						PDS MCP server.
+					</p>
+					<ButtonLink
+						linkContent={
+							<Link href='/documentation/claude-desktop-setup'>
+								Follow the Claude Desktop Setup guide
+							</Link>
+						}
+						size='sm'
+						variant='secondary'
+					/>
+				</section>
+
+				<section className={styles.section}>
+					<h2 className='pds-ts-2xl pds-mar-block-end-l'>
+						Reference Template Code
+					</h2>
+					<p className='pds-mar-block-end-m'>
+						Use this code as reference context for Claude. It shows the proper
+						structure and component usage for a PDS dashboard layout.
+					</p>
 
 					<h3 className='pds-ts-xl pds-mar-block-end-m'>page.tsx</h3>
-					<pre className={styles.codeBlock}>
-						<code>
-							{`'use client';
+					<CodeBlock
+						hasCopyButton
+						hasLineNumbers
+						code={`'use client';
 
 import Link from 'next/link';
 
@@ -141,15 +137,16 @@ export default function DashboardPage() {
     </GlobalWrapper>
   );
 }`}
-						</code>
-					</pre>
+						language='tsx'
+					/>
 
 					<h3 className='pds-ts-xl pds-mar-block-end-m pds-mar-block-start-xl'>
 						page.module.css
 					</h3>
-					<pre className={styles.codeBlock}>
-						<code>
-							{`/* Add your custom styles here using PDS design tokens */
+					<CodeBlock
+						hasCopyButton
+						hasLineNumbers
+						code={`/* Add your custom styles here using PDS design tokens */
 
 .container {
   padding: var(--pds-spacing-xl);
@@ -166,49 +163,43 @@ export default function DashboardPage() {
 .section {
   margin-block-end: var(--pds-spacing-2xl);
 }`}
-						</code>
-					</pre>
+						language='css'
+					/>
 				</section>
 
 				<section className={styles.section}>
 					<h2 className='pds-ts-2xl pds-mar-block-end-l'>
-						Using with Claude Enterprise
+						Creating Mockups with Claude Desktop
 					</h2>
 
 					<h3 className='pds-ts-xl pds-mar-block-end-m'>
-						Step 1: Set Up Your Project
-					</h3>
-					<ol className={styles.list}>
-						<li>Create a Next.js project with App Router and TypeScript</li>
-						<li>
-							Install PDS Toolkit:{' '}
-							<code className={styles.inlineCode}>
-								npm install @pantheon-systems/pds-toolkit-react
-							</code>
-						</li>
-						<li>Copy the template code above into your page file</li>
-						<li>Create the corresponding CSS module file</li>
-					</ol>
-
-					<h3 className='pds-ts-xl pds-mar-block-end-m pds-mar-block-start-xl'>
-						Step 2: Start a Conversation with Claude
+						Step 1: Start a Conversation
 					</h3>
 					<p className='pds-mar-block-end-m'>
-						Share this resource URL with Claude Enterprise, or paste the
-						template code and say:
+						Open Claude Desktop and share this resource URL, or paste the
+						template code below as reference. Then use a prompt like this:
 					</p>
-					<pre className={styles.promptBlock}>
-						<code>
-							{`I'm building a dashboard prototype using the PDS Toolkit React design system.
-I've set up the starter template above. Please help me iterate on this prototype.
+					<CodeBlock
+						hasCopyButton
+						code={`I want to create a dashboard mockup using the PDS Toolkit React design system.
 
-Before we start, please use the PDS MCP server to:
-1. Review available PDS components
-2. Understand the component documentation
+Use the PDS MCP server to review available components and create a visual artifact
+showing a dashboard with:
+- AppLayout with sidebar navigation
+- A main content area with [describe what you want to show]
+- Proper PDS styling and components
 
-Then help me add [describe what you want to build].`}
-						</code>
-					</pre>
+Use the template code above as a starting point for the structure.`}
+					/>
+
+					<h3 className='pds-ts-xl pds-mar-block-end-m pds-mar-block-start-xl'>
+						Step 2: Iterate on Your Mockup
+					</h3>
+					<p className='pds-mar-block-end-m'>
+						Claude will create a visual artifact. You can then ask it to refine
+						the design, add features, or adjust the layout. The artifact will
+						update in real-time as you iterate.
+					</p>
 				</section>
 
 				<section className={styles.section}>
@@ -220,98 +211,88 @@ Then help me add [describe what you want to build].`}
 						<h3 className='pds-ts-l pds-mar-block-end-s'>
 							Adding a Data Table
 						</h3>
-						<pre className={styles.promptBlock}>
-							<code>
-								{`Add a Table component to display a list of sites.
+						<CodeBlock
+							hasCopyButton
+							code={`Update the mockup to show a Table component displaying a list of sites.
 The table should show: Site Name, Status (with IndicatorBadge), Plan, and a View button.
-Use mock data for now.`}
-							</code>
-						</pre>
+Use realistic mock data.`}
+						/>
 					</div>
 
 					<div className={styles.promptExample}>
 						<h3 className='pds-ts-l pds-mar-block-end-s'>
 							Creating a Card Grid
 						</h3>
-						<pre className={styles.promptBlock}>
-							<code>
-								{`Create a grid of Cards showing site statistics.
-Each card should have an icon, a metric number, a label, and use PDS design tokens for spacing and colors.`}
-							</code>
-						</pre>
+						<CodeBlock
+							hasCopyButton
+							code={`Add a grid of Cards above the table showing site statistics.
+Each card should have an icon, a metric number, and a label using PDS design tokens.`}
+						/>
 					</div>
 
 					<div className={styles.promptExample}>
 						<h3 className='pds-ts-l pds-mar-block-end-s'>
-							Adding a Form with Validation
+							Adding a Modal Dialog
 						</h3>
-						<pre className={styles.promptBlock}>
-							<code>
-								{`Add a form to create a new site. Include TextInput fields for site name and description,
-a Select for choosing a framework, and a Button to submit.
-Add basic validation using PDS form components.`}
-							</code>
-						</pre>
+						<CodeBlock
+							hasCopyButton
+							code={`Show what it would look like when a user clicks "Create New Site".
+Display a Modal with a form including TextInput fields, a Select dropdown, and action buttons.`}
+						/>
 					</div>
 
 					<div className={styles.promptExample}>
 						<h3 className='pds-ts-l pds-mar-block-end-s'>
-							Styling with PDS Tokens
+							Refining the Design
 						</h3>
-						<pre className={styles.promptBlock}>
-							<code>
-								{`Review the current layout and ensure all spacing, typography, and colors
-use PDS design tokens. Update the CSS module to follow PDS patterns.`}
-							</code>
-						</pre>
+						<CodeBlock
+							hasCopyButton
+							code={`Review the mockup and suggest improvements for:
+- Better spacing and visual hierarchy
+- More effective use of PDS components
+- Improved information architecture`}
+						/>
 					</div>
 				</section>
 
 				<section className={styles.section}>
 					<h2 className='pds-ts-2xl pds-mar-block-end-l'>
-						Important Guidelines
+						Tips for Better Mockups
 					</h2>
 					<ul className={styles.list}>
 						<li>
-							<strong>Always use PDS components first</strong> - Before building
-							custom UI, check if a PDS component exists
+							<strong>Ask Claude to use PDS components</strong> - The MCP server
+							gives Claude access to authentic component documentation
 						</li>
 						<li>
-							<strong>Read component docs before using</strong> - Have Claude
-							fetch the component documentation from the MCP server
+							<strong>Be specific about interactions</strong> - Describe what
+							happens when users click buttons, open menus, etc.
 						</li>
 						<li>
-							<strong>Use PDS design tokens</strong> - Never hard-code colors,
-							spacing, or typography values
+							<strong>Request multiple states</strong> - Ask to see loading
+							states, error states, empty states, etc.
 						</li>
 						<li>
-							<strong>CSS Modules only</strong> - Use CSS Modules for custom
-							styles, not Tailwind or inline styles
+							<strong>Iterate gradually</strong> - Start with basic layout, then
+							add details and refinements
 						</li>
 						<li>
-							<strong>Keep it client-side</strong> - All PDS components require
-							&apos;use client&apos; directive
+							<strong>Use realistic content</strong> - Ask for realistic mock
+							data to better evaluate the design
 						</li>
 					</ul>
 				</section>
 
-				<section className={styles.section}>
-					<h2 className='pds-ts-2xl pds-mar-block-end-l'>Next Steps</h2>
-					<ol className={styles.list}>
-						<li>Set up your Next.js project with the template code above</li>
-						<li>Configure the PDS MCP server in Claude Enterprise</li>
-						<li>
-							Start a conversation with Claude and share this resource URL
-						</li>
-						<li>
-							Ask Claude to help you build your prototype using PDS components
-						</li>
-						<li>Iterate and refine based on feedback</li>
-					</ol>
-				</section>
-
 				<footer className={styles.footer}>
-					<Link href='/resources'>← Back to Resources</Link>
+					<ButtonLink
+						displayType='icon-start'
+						iconName='angleLeft'
+						linkContent={
+							<Link href='/resources'>Back to Desktop Resources</Link>
+						}
+						size='sm'
+						variant='subtle'
+					/>
 				</footer>
 			</article>
 		</PageLayout>
