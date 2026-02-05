@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 
-import { ButtonLink, Card } from '@pantheon-systems/pds-toolkit-react';
+import { EmptyStateCard } from '@pantheon-systems/pds-toolkit-react';
 
 import { PageHeader, PageLayout } from '../components';
 
@@ -28,16 +28,12 @@ export default function ResourcesPage() {
 
 			<div className={styles.resourceGrid}>
 				{resources.map((resource) => (
-					<Card key={resource.id} className={styles.resourceCard}>
-						<h2 className='pds-ts-xl pds-mar-block-end-m'>{resource.title}</h2>
-						<p className='pds-mar-block-end-l'>{resource.description}</p>
-						<div className={styles.cardActions}>
-							<ButtonLink
-								linkContent={<Link href={resource.path}>View Resource</Link>}
-								variant='primary'
-							/>
-						</div>
-					</Card>
+					<EmptyStateCard
+						key={resource.id}
+						headingText={resource.title}
+						linkContent={<Link href={resource.path}>View Resource</Link>}
+						summary={resource.description}
+					/>
 				))}
 			</div>
 

@@ -1,6 +1,6 @@
 'use client';
 
-import { ButtonLink, Card } from '@pantheon-systems/pds-toolkit-react';
+import { EmptyStateCard } from '@pantheon-systems/pds-toolkit-react';
 
 import { PageHeader, PageLayout } from '../components';
 
@@ -30,20 +30,17 @@ export default function DocumentationPage() {
 
 			<div className={styles.docGrid}>
 				{docs.map((doc) => (
-					<Card key={doc.title} className={styles.docCard}>
-						<h2 className='pds-ts-xl pds-mar-block-end-m'>{doc.title}</h2>
-						<p className='pds-mar-block-end-l'>{doc.description}</p>
-						<div className={styles.cardActions}>
-							<ButtonLink
-								linkContent={
-									<a href={doc.href} rel='noopener noreferrer' target='_blank'>
-										View Documentation
-									</a>
-								}
-								variant='primary'
-							/>
-						</div>
-					</Card>
+					<EmptyStateCard
+						key={doc.title}
+						isLinkExternal
+						headingText={doc.title}
+						linkContent={
+							<a href={doc.href} rel='noopener noreferrer' target='_blank'>
+								View Documentation
+							</a>
+						}
+						summary={doc.description}
+					/>
 				))}
 			</div>
 		</PageLayout>
