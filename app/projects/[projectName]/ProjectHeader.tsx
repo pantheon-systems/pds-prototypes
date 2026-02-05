@@ -32,15 +32,10 @@ export default function ProjectHeader({
 	}, []);
 
 	// Save hidden state to localStorage
-	const toggleHeader = (e: React.MouseEvent<HTMLButtonElement>) => {
+	const toggleHeader = () => {
 		const newState = !isHidden;
 		setIsHidden(newState);
 		localStorage.setItem('projectHeaderHidden', String(newState));
-
-		// Remove focus when hiding so button becomes invisible
-		if (newState) {
-			e.currentTarget.blur();
-		}
 	};
 
 	const headerClass =

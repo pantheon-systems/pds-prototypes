@@ -82,23 +82,6 @@ export default function HomePage() {
 		/>,
 	]);
 
-	if (loading) {
-		return (
-			<GlobalWrapper>
-				<Navbar
-					containerWidth='x-wide'
-					logoDisplayType='sub-brand'
-					logoSubBrand='PDS Prototypes'
-				/>
-				<main>
-					<Container className='pds-mar-block-3xl' width='x-wide'>
-						<p>Loading projects...</p>
-					</Container>
-				</main>
-			</GlobalWrapper>
-		);
-	}
-
 	return (
 		<GlobalWrapper>
 			<Navbar
@@ -106,38 +89,36 @@ export default function HomePage() {
 				logoDisplayType='sub-brand'
 				logoSubBrand='PDS Prototypes'
 			/>
-			<main>
-				<Container className='pds-mar-block-3xl' width='x-wide'>
-					{projects.length === 0 ? (
-						<EmptyStateCard
-							headingText='No projects yet'
-							linkContent={
-								<div className={styles.emptyStateCta}>
-									<code className={styles.code}>npm run new</code>
-								</div>
-							}
-							summary='Create your first project to get started with prototyping. Run the command below in your terminal.'
-						/>
-					) : (
-						<div className={styles.projectsSection}>
-							<div className={styles.projectsHeader}>
-								<h1 className='pds-ts-2xl pds-mar-block-end-xl'>
-									All Projects
-								</h1>
+			<Container className='pds-mar-block-3xl' width='x-wide'>
+				{loading ? (
+					<p>Loading projects...</p>
+				) : projects.length === 0 ? (
+					<EmptyStateCard
+						headingText='No projects yet'
+						linkContent={
+							<div className={styles.emptyStateCta}>
+								<code className={styles.code}>npm run new</code>
 							</div>
-
-							<Table headers={headers} rowData={rowData} />
+						}
+						summary='Create your first project to get started with prototyping. Run the command below in your terminal.'
+					/>
+				) : (
+					<div className={styles.projectsSection}>
+						<div className={styles.projectsHeader}>
+							<h1 className='pds-ts-2xl pds-mar-block-end-xl'>All Projects</h1>
 						</div>
-					)}
 
-					<footer className={styles.footer}>
-						<p>
-							To create a new project, run <code>npm run new</code> in your
-							terminal
-						</p>
-					</footer>
-				</Container>
-			</main>
+						<Table headers={headers} rowData={rowData} />
+					</div>
+				)}
+
+				<footer className={styles.footer}>
+					<p>
+						To create a new project, run <code>npm run new</code> in your
+						terminal
+					</p>
+				</footer>
+			</Container>
 		</GlobalWrapper>
 	);
 }
