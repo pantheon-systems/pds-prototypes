@@ -4,7 +4,11 @@ import Link from 'next/link';
 
 import { ButtonLink, CodeBlock } from '@pantheon-systems/pds-toolkit-react';
 
-import { PageHeader, PageLayout } from '../../components';
+import {
+	PageHeader,
+	PageLayout,
+	ResourceUsageInstructions,
+} from '../../components';
 
 import styles from './page.module.css';
 
@@ -16,6 +20,8 @@ export default function DashboardResourcePage() {
 					description='Reference templates and guidance for creating dashboard mockups with Claude Desktop using PDS components.'
 					title='Dashboard Template'
 				/>
+
+				<ResourceUsageInstructions />
 
 				<section className={styles.section}>
 					<h2 className='pds-ts-2xl pds-mar-block-end-l'>
