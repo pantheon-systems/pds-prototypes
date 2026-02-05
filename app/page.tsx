@@ -108,7 +108,8 @@ export default function HomePage() {
 
 			<footer className={styles.footer}>
 				<p>
-					Run <code>npm run new</code> to create a project.
+					Run <code>npm run new</code> in the repository root to create a
+					project.
 				</p>
 			</footer>
 		</PageLayout>

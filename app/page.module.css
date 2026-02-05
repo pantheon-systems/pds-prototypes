@@ -45,11 +45,3 @@
 	padding-top: var(--pds-spacing-xl);
 	text-align: center;
 }
-
-.footer code {
-	background: var(--pds-color-bg-default-secondary);
-	border-radius: var(--pds-border-radius-default);
-	color: var(--pds-color-fg-default);
-	font-family: var(--pds-typography-ff-mono);
-	padding: var(--pds-spacing-5xs) var(--pds-spacing-2xs);
-}
