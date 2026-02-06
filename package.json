@@ -48,7 +48,8 @@
 		"typescript": "^5.7.0"
 	},
 	"lint-staged": {
-		"*": "prettier --write --ignore-unknown",
-		"**/*.{js,jsx,ts,tsx}": "npm run eslint -- --fix"
+		"*.{js,jsx,ts,tsx,json,css,md}": "prettier --write",
+		"{app,shared-data,scripts}/**/*.{js,jsx,ts,tsx,json,css,md}": "prettier --write",
+		"{app,shared-data,scripts}/**/*.{js,jsx,ts,tsx}": "npm run eslint -- --fix"
 	}
 }

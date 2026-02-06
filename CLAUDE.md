@@ -237,6 +237,8 @@ npm run aggregate
 
 **Why this matters:** The aggregated metadata is used by the project listing page to display all projects. If you don't run the aggregate script, changes won't be reflected in the UI.
 
+**Note about pre-commit hooks:** The pre-commit linting is configured to exclude the `projects/` directory. This means designers can commit their prototype code without linting errors blocking them. Pre-commit checks only run on core app files (`app/`, `shared-data/`, `scripts/`, and root files).
+
 ## Code Style
 
 ### Formatting:
