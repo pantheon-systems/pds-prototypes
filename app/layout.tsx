@@ -1,7 +1,5 @@
 import type { Metadata } from 'next';
 
-import FontPreconnect from './FontPreconnect';
-
 import '@pantheon-systems/pds-toolkit-react/css/pds-core.css';
 import './globals.css';
 
@@ -17,10 +15,7 @@ export default function RootLayout({
 }) {
 	return (
 		<html lang='en'>
-			<body>
-				<FontPreconnect />
-				{children}
-			</body>
+			<body>{children}</body>
 		</html>
 	);
 }
