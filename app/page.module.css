@@ -26,17 +26,6 @@
 	max-width: 300px;
 }
 
-.templateBadge {
-	background: var(--pds-color-bg-default-secondary);
-	border-radius: var(--pds-border-radius-default);
-	color: var(--pds-color-fg-default-secondary);
-	display: inline-block;
-	font-size: var(--pds-typography-size-xs);
-	font-weight: var(--pds-typography-fw-medium);
-	padding: var(--pds-spacing-5xs) var(--pds-spacing-2xs);
-	text-transform: capitalize;
-}
-
 /* Footer */
 .footer {
 	color: var(--pds-color-fg-default-secondary);

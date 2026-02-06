@@ -68,9 +68,14 @@ export default function HomePage() {
 			label={STATUS_CONFIG[project.status].label}
 			size='sm'
 		/>,
-		<span key={`${project.id}-template`} className={styles.templateBadge}>
-			{project.template}
-		</span>,
+		<IndicatorBadge
+			key={`${project.id}-template`}
+			color='neutral'
+			label={
+				project.template.charAt(0).toUpperCase() + project.template.slice(1)
+			}
+			size='sm'
+		/>,
 		formatDate(project.createdDate),
 		formatDate(project.lastUpdated),
 		<ButtonLink
