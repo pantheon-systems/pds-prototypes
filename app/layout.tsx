@@ -1,5 +1,7 @@
 import type { Metadata } from 'next';
 
+import FontPreconnect from './FontPreconnect';
+
 import '@pantheon-systems/pds-toolkit-react/css/pds-core.css';
 import './globals.css';
 
@@ -15,15 +17,10 @@ export default function RootLayout({
 }) {
 	return (
 		<html lang='en'>
-			<head>
-				<link href='https://fonts.googleapis.com' rel='preconnect' />
-				<link
-					crossOrigin='anonymous'
-					href='https://fonts.gstatic.com'
-					rel='preconnect'
-				/>
-			</head>
-			<body>{children}</body>
+			<body>
+				<FontPreconnect />
+				{children}
+			</body>
 		</html>
 	);
 }
