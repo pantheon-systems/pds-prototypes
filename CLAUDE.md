@@ -200,6 +200,43 @@ export default function Dashboard() {
 }
 ```
 
+### Managing Projects and Metadata:
+
+**IMPORTANT: Always run the aggregate script after modifying project metadata or deleting projects.**
+
+The aggregate script (`npm run aggregate`) scans all project directories and compiles their metadata into a single source of truth. This must be run whenever you:
+
+1. **Delete a project** - Remove the project directory, then run `npm run aggregate`
+2. **Change project metadata** - Edit `metadata.json` file, then run `npm run aggregate`
+3. **Create a new project** - After creation, run `npm run aggregate`
+4. **Change project status** - Update the status field, then run `npm run aggregate`
+
+**Valid status values:**
+
+- `in-progress` - Currently being worked on
+- `review` - Ready for review
+- `ready` - Completed and ready to use
+- `archived` - Not actively used
+
+**Example workflow:**
+
+```bash
+# Delete a project
+rm -rf projects/old-project
+
+# Reaggregate metadata
+npm run aggregate
+
+# Change project status
+# Edit projects/my-project/metadata.json
+# Change "status": "in-progress" to "status": "ready"
+
+# Reaggregate metadata
+npm run aggregate
+```
+
+**Why this matters:** The aggregated metadata is used by the project listing page to display all projects. If you don't run the aggregate script, changes won't be reflected in the UI.
+
 ## Code Style
 
 ### Formatting:
