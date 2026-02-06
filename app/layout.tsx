@@ -15,6 +15,14 @@ export default function RootLayout({
 }) {
 	return (
 		<html lang='en'>
+			<head>
+				<link href='https://fonts.googleapis.com' rel='preconnect' />
+				<link
+					crossOrigin='anonymous'
+					href='https://fonts.gstatic.com'
+					rel='preconnect'
+				/>
+			</head>
 			<body>{children}</body>
 		</html>
 	);
