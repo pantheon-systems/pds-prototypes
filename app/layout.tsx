@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 
-import FontPreconnect from './FontPreconnect';
+import { aleo, inter, poppins, sourceCodePro } from './fonts';
 
 import '@pantheon-systems/pds-toolkit-react/css/pds-core.css';
 import './globals.css';
@@ -16,11 +16,11 @@ export default function RootLayout({
 	children: React.ReactNode;
 }) {
 	return (
-		<html lang='en'>
-			<body>
-				<FontPreconnect />
-				{children}
-			</body>
+		<html
+			className={`${poppins.variable} ${inter.variable} ${aleo.variable} ${sourceCodePro.variable}`}
+			lang='en'
+		>
+			<body>{children}</body>
 		</html>
 	);
 }
