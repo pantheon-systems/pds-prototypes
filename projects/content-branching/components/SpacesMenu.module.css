@@ -1,0 +1,178 @@
+/* Container and trigger */
+.container {
+	position: relative;
+}
+
+.trigger {
+	background: transparent;
+	border: none;
+	cursor: pointer;
+	display: flex;
+	padding: 0;
+}
+
+.trigger:hover {
+	opacity: 0.8;
+}
+
+/* Backdrop */
+.backdrop {
+	background: transparent;
+	bottom: 0;
+	left: 0;
+	position: fixed;
+	right: 0;
+	top: 0;
+	z-index: 999;
+}
+
+/* Menu container - 320px width, white bg, 6px radius, shadow */
+.menu {
+	background: var(--pds-color-bg-default);
+	border-radius: var(--pds-border-radius-container);
+	box-shadow:
+		0 4px 6px -1px rgba(0, 0, 0, 0.1),
+		0 2px 4px -1px rgba(0, 0, 0, 0.06);
+	display: flex;
+	flex-direction: column;
+	max-height: 80vh;
+	position: absolute;
+	right: 0;
+	top: calc(100% + var(--pds-spacing-xs));
+	width: 320px;
+	z-index: 1000;
+}
+
+/* User info section - light gray bg, 6px radius, 20px padding */
+.userInfo {
+	align-items: flex-start;
+	background: var(--pds-color-bg-default-secondary);
+	border-radius: var(--pds-border-radius-container);
+	display: flex;
+	gap: var(--pds-spacing-s);
+	margin: var(--pds-spacing-l);
+	padding: var(--pds-spacing-l);
+}
+
+.userDetails {
+	display: flex;
+	flex: 1;
+	flex-direction: column;
+	gap: var(--pds-spacing-xs);
+}
+
+/* User name - regular/M typography */
+.userName {
+	color: var(--pds-color-fg-default);
+	font-size: var(--pds-typography-size-m);
+	font-weight: var(--pds-typography-fw-regular);
+	line-height: var(--pds-typography-lh-m);
+}
+
+/* Email - s typography, secondary color */
+.userEmail {
+	color: var(--pds-color-fg-secondary);
+	font-size: var(--pds-typography-size-s);
+	font-weight: var(--pds-typography-fw-light);
+	line-height: var(--pds-typography-lh-s);
+}
+
+/* Log out link - icon + text */
+.logoutLink {
+	align-items: center;
+	color: var(--pds-color-fg-default-secondary);
+	display: flex;
+	font-size: var(--pds-typography-size-s);
+	gap: var(--pds-spacing-xs);
+	text-decoration: none;
+}
+
+.logoutLink:hover {
+	color: var(--pds-color-fg-action);
+}
+
+.logoutIcon {
+	fill: none;
+	flex-shrink: 0;
+	height: 16px;
+	stroke: currentColor;
+	stroke-linecap: round;
+	stroke-linejoin: round;
+	stroke-width: 1.5;
+	width: 16px;
+}
+
+/* Current space section - 25px bottom margin */
+.currentSpaceSection {
+	margin-bottom: var(--pds-spacing-xl);
+	padding: 0 var(--pds-spacing-l);
+}
+
+/* Other spaces section - scrollable */
+.otherSpacesSection {
+	display: flex;
+	flex: 1;
+	flex-direction: column;
+	min-height: 0;
+	padding: 0 var(--pds-spacing-l);
+}
+
+/* Section labels - s typography, lighter secondary color */
+.sectionLabel {
+	color: var(--pds-color-fg-default-secondary);
+	font-size: var(--pds-typography-size-s);
+	font-weight: var(--pds-typography-fw-light);
+	line-height: var(--pds-typography-lh-s);
+	margin-bottom: var(--pds-spacing-s);
+}
+
+/* Search wrapper */
+.searchWrapper {
+	margin-bottom: var(--pds-spacing-s);
+}
+
+/* Spaces list - scrollable, max 5 items visible */
+.spacesList {
+	display: flex;
+	flex-direction: column;
+	gap: var(--pds-spacing-3xs);
+	max-height: 200px;
+	overflow-y: auto;
+}
+
+/* Space item - icon + name, 5.25px vertical spacing */
+.spaceItem {
+	align-items: center;
+	border-radius: var(--pds-border-radius-default);
+	color: var(--pds-color-fg-default);
+	display: flex;
+	font-size: var(--pds-typography-size-m);
+	gap: var(--pds-spacing-s);
+	padding: var(--pds-spacing-3xs) var(--pds-spacing-xs);
+	text-decoration: none;
+	transition: background-color 0.2s;
+}
+
+.spaceItem:hover {
+	background: var(--pds-color-bg-default-secondary);
+}
+
+.spaceName {
+	flex: 1;
+	font-size: var(--pds-typography-size-m);
+	line-height: var(--pds-typography-lh-m);
+}
+
+/* Footer - fixed at bottom */
+.footer {
+	border-top: 1px solid var(--pds-color-border-default);
+	margin-top: var(--pds-spacing-m);
+	padding: var(--pds-spacing-m) var(--pds-spacing-l);
+}
+
+.footer button {
+	color: #4f32ce;
+	justify-content: flex-start;
+	text-align: left;
+	width: 100%;
+}

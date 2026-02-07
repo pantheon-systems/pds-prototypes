@@ -1,0 +1,340 @@
+/* Dashboard Design - Using PDS DashboardGlobal Layout */
+
+/* Main content area - where designers work */
+.mainContent {
+	display: flex;
+	flex-direction: column;
+}
+
+/* Two-column Layout */
+.twoColumnLayout {
+	display: grid;
+	gap: var(--pds-spacing-xl);
+	grid-template-columns: 1fr 320px;
+}
+
+@media (max-width: 768px) {
+	.twoColumnLayout {
+		grid-template-columns: 1fr;
+	}
+
+	.rightColumn {
+		order: -1;
+	}
+}
+
+/* Left Column */
+.leftColumn {
+	display: flex;
+	flex-direction: column;
+	gap: var(--pds-spacing-l);
+}
+
+.pageTitle {
+	color: var(--pds-color-fg-default);
+	font-size: var(--pds-typography-size-3xl);
+	font-weight: var(--pds-typography-fw-semibold);
+	line-height: var(--pds-typography-lh-m);
+	margin: 0;
+}
+
+/* Filters Row */
+.filtersRow {
+	align-items: center;
+	display: flex;
+	gap: var(--pds-spacing-m);
+}
+
+.searchInput {
+	flex: 1;
+}
+
+.statusFilter {
+	min-width: 200px;
+}
+
+/* Right Column */
+.rightColumn {
+	align-self: start;
+}
+
+/* Collections Grid - 2-column flexible grid */
+.collectionsGrid {
+	display: grid;
+	gap: var(--pds-spacing-l);
+	grid-template-columns: repeat(2, 1fr);
+}
+
+@media (max-width: 768px) {
+	.collectionsGrid {
+		grid-template-columns: 1fr;
+	}
+}
+
+/* Infinite scroll elements */
+.loadMoreTrigger {
+	grid-column: 1 / -1;
+	min-height: 50px;
+	padding: var(--pds-spacing-m) 0;
+}
+
+.loadingMessage {
+	color: var(--pds-color-fg-secondary);
+	font-size: var(--pds-typography-size-s);
+	padding: var(--pds-spacing-l);
+	text-align: center;
+}
+
+.endMessage {
+	color: var(--pds-color-fg-secondary);
+	font-size: var(--pds-typography-size-s);
+	grid-column: 1 / -1;
+	padding: var(--pds-spacing-l);
+	text-align: center;
+}
+
+/* Collection Card - Horizontal flex container */
+.collectionCard {
+	align-items: flex-start;
+	background: var(--pds-color-bg-default);
+	border: 1px solid var(--pds-color-border-default);
+	border-radius: var(--pds-border-radius-container);
+	display: flex;
+	flex-direction: row;
+	gap: var(--pds-spacing-m);
+	padding: var(--pds-spacing-l);
+	transition: box-shadow 0.2s ease;
+}
+
+.collectionCard:hover {
+	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Thumbnail - Fixed width, left side */
+.thumbnail {
+	border-radius: 3px;
+	flex-basis: 124px;
+	flex-grow: 0;
+	flex-shrink: 0;
+	height: 80px;
+	overflow: hidden;
+	width: 124px;
+}
+
+.thumbnail svg {
+	display: block;
+	height: 100%;
+	width: 100%;
+}
+
+/* Content Area - Flexible width, right side */
+.contentArea {
+	display: flex;
+	flex: 1 1 auto;
+	flex-direction: column;
+	max-width: 100%;
+	min-width: 0;
+	overflow: hidden;
+}
+
+.collectionName {
+	color: var(--pds-color-fg-default);
+	font-size: var(--pds-typography-size-l);
+	font-weight: var(--pds-typography-fw-semibold);
+	line-height: var(--pds-typography-lh-m);
+	margin: 0 0 var(--pds-spacing-m) 0;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+/* Owner Info */
+.ownerInfo {
+	align-items: center;
+	display: flex;
+	gap: var(--pds-spacing-s);
+	margin: 0 0 var(--pds-spacing-m) 0;
+}
+
+.ownerDetails {
+	display: flex;
+	flex-direction: column;
+	gap: var(--pds-spacing-5xs);
+	min-width: 0;
+}
+
+.ownerName {
+	color: var(--pds-color-fg-default);
+	font-size: var(--pds-typography-size-s);
+	font-weight: var(--pds-typography-fw-medium);
+	line-height: var(--pds-typography-lh-s);
+}
+
+.ownerEmail {
+	color: var(--pds-color-fg-secondary);
+	font-size: var(--pds-typography-size-xs);
+	line-height: var(--pds-typography-lh-s);
+}
+
+/* Divider */
+.divider {
+	border: 0;
+	border-top: 1px solid var(--pds-color-border-default);
+	margin: var(--pds-spacing-m) 0;
+	width: 100%;
+}
+
+/* Bottom Row */
+.bottomRow {
+	align-items: center;
+	display: flex;
+	gap: var(--pds-spacing-m);
+	justify-content: space-between;
+}
+
+.linkWrapper {
+	flex: 1;
+	min-width: 0;
+	overflow: hidden;
+}
+
+.linkWrapper a {
+	display: block;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+/* Sidebar */
+.sidebar {
+	align-self: start;
+}
+
+/* Usage Panel Container - Holds 3 white panels inside sunken panel */
+.usagePanelContainer {
+	display: flex;
+	flex-direction: column;
+	gap: var(--pds-spacing-m);
+}
+
+/* White Panel - Content wrapper inside each default Panel */
+.whitePanel {
+	display: flex;
+	flex-direction: column;
+	gap: var(--pds-spacing-xs);
+}
+
+/* Usage Header - Horizontal layout with button on right */
+.usageHeader {
+	align-items: flex-start;
+	display: flex;
+	justify-content: space-between;
+	margin-bottom: var(--pds-spacing-xs);
+}
+
+.usageInfo {
+	display: flex;
+	flex-direction: column;
+	gap: var(--pds-spacing-xs);
+}
+
+/* Bold M Typography - Not semantic headings, just bold labels */
+.boldM {
+	color: var(--pds-color-fg-default);
+	font-size: var(--pds-typography-size-m);
+	font-weight: var(--pds-typography-fw-bold);
+	line-height: var(--pds-typography-lh-m);
+}
+
+/* Subtext - Regular XS, secondary color */
+.subtext {
+	color: var(--pds-color-fg-secondary);
+	font-size: var(--pds-typography-size-xs);
+	font-weight: var(--pds-typography-fw-regular);
+	line-height: var(--pds-typography-lh-s);
+	margin: 0;
+}
+
+/* Capacity Section */
+.capacitySection {
+	display: flex;
+	flex-direction: column;
+	gap: var(--pds-spacing-s);
+}
+
+/* Capacity Header - Text with inline divider */
+.capacityHeader {
+	align-items: center;
+	display: flex;
+	gap: var(--pds-spacing-s);
+	margin-bottom: var(--pds-spacing-xs);
+}
+
+.capacityHeaderText {
+	flex: 0 0 auto;
+}
+
+.capacityHeaderDivider {
+	border-top: 1px solid var(--pds-color-border-default);
+	flex: 1;
+}
+
+/* Capacity List */
+.capacityList {
+	display: flex;
+	flex-direction: column;
+	gap: var(--pds-spacing-s);
+}
+
+/* Capacity Row - Horizontal layout: label on left, value + progress on right */
+.capacityRow {
+	align-items: center;
+	display: flex;
+	justify-content: space-between;
+}
+
+.capacityLabel {
+	color: var(--pds-color-fg-secondary);
+	font-size: var(--pds-typography-size-xs);
+	font-weight: var(--pds-typography-fw-regular);
+	line-height: var(--pds-typography-lh-s);
+}
+
+/* Capacity Value - Right side container with value text + progress bar */
+.capacityValue {
+	align-items: center;
+	display: flex;
+	gap: var(--pds-spacing-xs);
+}
+
+.valueText {
+	color: var(--pds-color-fg-default);
+	font-size: var(--pds-typography-size-xs);
+	font-weight: var(--pds-typography-fw-regular);
+	line-height: var(--pds-typography-lh-s);
+	min-width: 45px;
+	text-align: right;
+}
+
+/* Value at limit - Red color for 100% usage */
+.valueAtLimit {
+	color: var(--pds-color-fg-critical);
+}
+
+/* Progress Bar Wrapper - Constrain width */
+.progressBarWrapper {
+	width: 30px;
+}
+
+/* Publisher Links */
+.publisherLinks {
+	display: flex;
+	flex-direction: column;
+	gap: var(--pds-spacing-s);
+}
+
+.linkWithIcon {
+	align-items: center;
+	display: flex;
+	gap: var(--pds-spacing-xs);
+}
